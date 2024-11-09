@@ -20,7 +20,7 @@ public class FileController {
        
     public Connection getConnection() throws SQLException{
         
-        Connection connect = DriverManager.getConnection("jdbc:postgresql://localhost:5432/RogerCard","postgres","root");
+        Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/RogerCard","root",pass);
         return connect;
       
     }
