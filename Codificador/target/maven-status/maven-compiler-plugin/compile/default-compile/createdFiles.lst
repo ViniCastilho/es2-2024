@@ -4,8 +4,10 @@ Controllers\UserController.class
 GUI\RogerCardGUI$7.class
 data\UserDB.class
 GUI\RogerCardGUI$8.class
+Controllers\UserController$RegisterStatus.class
 Static\Static.class
 GUI\RogerCardGUI$1.class
+GUI\RogerCardGUI$9.class
 GUI\RogerCardGUI.class
 com\mycompany\rogercard\Rogercard.class
 Class\CreditCard.class

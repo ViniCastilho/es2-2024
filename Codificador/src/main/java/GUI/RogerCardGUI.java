@@ -5,6 +5,8 @@
 package GUI;
 
 import Class.User;
+import Controllers.UserController;
+import Controllers.UserController.RegisterStatus;
 import data.FileController;
 import data.UserDB;
 import java.sql.Connection;
@@ -217,25 +219,32 @@ public class RogerCardGUI extends javax.swing.JFrame {
         String name = nameCadTextField1.getText();
         String email = emailCadTextField2.getText();
         String pass = passCadTextField3.getText();
-        //verificação de dados Vazios
-        if(!name.isEmpty() && !email.isEmpty() && !pass.isEmpty()){          
-        User user = new User(name,email,pass);
-        Connection connection;
-            try {
-                connection = new FileController().getConnection();
-                UserDB userDB = new UserDB(connection);
-                userDB.insert(user);
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(RogerCardGUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-        System.out.println(user.toString());
-        }else{
-            erroLabel2.setText("Dados Incompletos");
+  
+ 
+        UserController userController = new UserController();
+        RegisterStatus status = null;
+        try {
+            status = userController.UserRegister(name, email, pass);
+        } catch (SQLException ex) {
+            Logger.getLogger(RogerCardGUI.class.getName()).log(Level.SEVERE, null, ex);
+             erroLabel2.setText("Erro ao registrar usuário.");
         }
-        //adicionar verificação de email já existente quando existir lista de usuários
         
+ 
+        switch (status) {
+        case EMPTY_FIELDS:
+            erroLabel2.setText("Dados Incompletos");
+            break;
+        case USER_ALREADY_EXISTS:
+            erroLabel2.setText("Usuário já cadastrado");
+            break;
+        case SUCCESS:
+            erroLabel2.setText("Usuário registrado com sucesso!");
+            break;
+        default:
+            erroLabel2.setText("Erro desconhecido");
+            break;
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void nameCadTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameCadTextField1FocusGained
