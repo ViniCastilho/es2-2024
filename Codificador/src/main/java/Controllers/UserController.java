@@ -22,6 +22,7 @@ public class UserController {
     public enum RegisterStatus{
         SUCCESS, EMPTY_FIELDS, USER_ALREADY_EXISTS;
     }
+    
  
    public RegisterStatus UserRegister(String name, String email, String pass) throws SQLException{
             ///verifica espaços vazios no cadastro
@@ -45,6 +46,23 @@ public class UserController {
     
         return RegisterStatus.SUCCESS;
     }
+   
+   
+   
+   public boolean UserLogin(String email, String pass) throws SQLException{
+      Connection connection = new FileController().getConnection();
+      UserDB userDB = new UserDB(connection);
+      //o objeto usuário recebe o resultada consulta select no banco 
+      //verifica se a senha é valida e retorna false or true;
+      User user;
+      user = userDB.select(email);
+      if(user.getPassword().equals(pass)){
+          return true;
+      }else{
+          return false;
+      }
+
+   }
        
 }
     
