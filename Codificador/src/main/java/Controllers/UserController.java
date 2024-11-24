@@ -5,7 +5,6 @@
 package Controllers;
 
 import Class.User;
-import GUI.RogerCardGUI;
 import data.FileController;
 import data.UserDB;
 import java.sql.Connection;
@@ -20,33 +19,52 @@ import java.util.logging.Logger;
 public class UserController {
     
     public enum RegisterStatus{
-        SUCCESS, EMPTY_FIELDS, USER_ALREADY_EXISTS;
+        ERROR,SUCCESS, EMPTY_FIELDS, USER_ALREADY_EXISTS;
     }
     
  
-   public RegisterStatus UserRegister(String name, String email, String pass) throws SQLException{
-            ///verifica espaços vazios no cadastro
-            if (name.isEmpty() || email.isEmpty() || pass.isEmpty()) {
-                return RegisterStatus.EMPTY_FIELDS;
-        }
-            //realiza conexao banco de dados
-            Connection connection = new FileController().getConnection();
-            UserDB userDB = new UserDB(connection);
-            //verifica seo  usuario já existe
-            if (userDB.select(email) != null) {
-                return RegisterStatus.USER_ALREADY_EXISTS;
-        }
-            //cria o usuario e insere no banco de dados
-            User user = new User(name, email, pass);
-                try {
-                    userDB.insert(user);
-            }catch (SQLException ex) {
-                Logger.getLogger(RogerCardGUI.class.getName()).log(Level.SEVERE, null, ex);   
-        }
+public RegisterStatus UserRegister(String name, String email, String pass) throws SQLException {
     
-        return RegisterStatus.SUCCESS;
+    if (name.isEmpty() || email.isEmpty() || pass.isEmpty()) {
+        return RegisterStatus.EMPTY_FIELDS;
     }
-   
+
+    Connection connection = null;
+    try {
+        connection = new FileController().getConnection();
+        System.out.println("Conexão estabelecida com sucesso!");
+
+        UserDB userDB = new UserDB(connection);
+        if (userDB.select(email) != null) {
+            return RegisterStatus.USER_ALREADY_EXISTS;
+        }
+
+        User user = new User(name, email, pass);
+        userDB.insert(user);
+
+        User sqlUser = userDB.select(email);
+        
+
+        CreditCardController creditController = new CreditCardController();
+        creditController.CreateCardRegister(sqlUser.getEmail());
+
+        return RegisterStatus.SUCCESS;
+
+    } catch (SQLException ex) {
+        Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+        return RegisterStatus.ERROR;
+
+    } finally {
+        if (connection != null && !connection.isClosed()) {
+            try {
+                connection.close();
+                System.out.println("Conexão fechada com sucesso.");
+            } catch (SQLException e) {
+                System.out.println("Erro ao fechar a conexão: " + e.getMessage());
+            }
+        }
+    }
+}
    
    
    public boolean UserLogin(String email, String pass) throws SQLException{

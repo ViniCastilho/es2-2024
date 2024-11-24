@@ -5,7 +5,6 @@
 package data;
 
 import Class.CreditCard;
-import Class.User;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -26,11 +25,13 @@ public class CreditDB {
     
     public void insert(CreditCard creditCard) throws SQLException{
 
-            String sq1 = "insert into userdb(creditcardnumber,creditcardlimit,creditcardduedate,creditcardinvoicevalue) values('"+creditCard.getNumber()+"','"+creditCard.getLimit()+"','"+creditCard.getDueDate()+"','"+creditCard.getInvoiceValue()+"');";
+        try (connection) {
+            String sq1 = "insert into creditcarddb(creditcardnumber,creditcardlimit,creditcardduedate,creditcardinvoicevalue,userid) "
+                    + "values('"+creditCard.getNumber()+"','"+creditCard.getLimit()+"','"+creditCard.getDueDate()+"','"+creditCard.getInvoiceValue()+"','"+creditCard.getUserid()+"');";
             
             PreparedStatement statement = connection.prepareStatement(sq1);
-            statement.execute();    
-            connection.close();
+            statement.execute();
+        }
   
         }
     
@@ -41,7 +42,7 @@ public class CreditDB {
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, number);
             
-            try (ResultSet resultSet = statement.executeQuery()) {
+                ResultSet resultSet = statement.executeQuery();
                 if (resultSet.next()) {
                     String creditCardNumber = resultSet.getString("creditcardnumber");
                     Double creditCardLimit = resultSet.getDouble("creditcardlimit");
@@ -56,15 +57,13 @@ public class CreditDB {
                     
                     Double creditCardInvoiceValue = resultSet.getDouble("creditcardinvoicevalue");
                     
-                    CreditCard creditCard = new CreditCard(creditCardNumber, creditCardLimit, creditCardDueDate, creditCardInvoiceValue);
+                    int userid = resultSet.getInt("userid");
+                    
+                    CreditCard creditCard = new CreditCard(creditCardNumber, creditCardLimit, creditCardDueDate, creditCardInvoiceValue,userid);
                     return creditCard;
                 }
             }
-        } catch (SQLException e) {
-            // Tratar exceções
-            e.printStackTrace();
-            throw e;
-        }
+        
         
         return null; // Se não encontrar o cartão de crédito
     }

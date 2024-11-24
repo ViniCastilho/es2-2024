@@ -4,7 +4,9 @@
  */
 package Class;
 
+
 import java.time.LocalDate;
+
 
 /**
  *
@@ -15,13 +17,15 @@ public class CreditCard {
     private double limit; 
     private LocalDate dueDate;
     private double invoiceValue;
+    private int userid;
     
     
-    public CreditCard(String number, double limit, LocalDate dueDate, double invoiceValue){
+    public CreditCard(String number, double limit, LocalDate dueDate, double invoiceValue,int userid){
         this.number = number;
         this.limit = limit; 
         this.dueDate = dueDate;
         this.invoiceValue = invoiceValue;
+        this.userid = userid;
     }
     
     public void showInvoice(){
@@ -63,6 +67,17 @@ public class CreditCard {
     public void setInvoiceValue(double invoiceValue) {
         this.invoiceValue = invoiceValue;
     }
+
+    public int getUserid() {
+        return userid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+    
+    
+
     
     
     

@@ -25,12 +25,15 @@ DROP TABLE IF EXISTS `creditcarddb`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `creditcarddb` (
-  `creditcardid` int NOT NULL AUTO_INCREMENT,
-  `creditcardnumber` bigint DEFAULT NULL,
+  `creditcardid` int NOT NULL,
+  `creditcardnumber` varchar(20) DEFAULT NULL,
   `creditcardlimit` double DEFAULT NULL,
   `creditcardduedate` date DEFAULT NULL,
   `creditcardinvoicevalue` double DEFAULT NULL,
-  PRIMARY KEY (`creditcardid`)
+  `userid` int DEFAULT NULL,
+  PRIMARY KEY (`creditcardid`),
+  KEY `fk_user_creditcard` (`userid`),
+  CONSTRAINT `fk_user_creditcard` FOREIGN KEY (`userid`) REFERENCES `userdb` (`userID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -56,7 +59,7 @@ CREATE TABLE `userdb` (
   `useremail` varchar(50) DEFAULT NULL,
   `userpassword` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +68,7 @@ CREATE TABLE `userdb` (
 
 LOCK TABLES `userdb` WRITE;
 /*!40000 ALTER TABLE `userdb` DISABLE KEYS */;
-INSERT INTO `userdb` VALUES (1,'Nome: ','Email: ','Senha: '),(2,'GER','GER','GERSS');
+INSERT INTO `userdb` VALUES (1,'Nome: ','Email: ','Senha: '),(2,'GER','GER','GERSS'),(3,'test','test','test');
 /*!40000 ALTER TABLE `userdb` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -78,4 +81,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-09  3:10:14
+-- Dump completed on 2024-11-24 13:58:49
