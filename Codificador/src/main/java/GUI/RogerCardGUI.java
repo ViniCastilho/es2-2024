@@ -4,12 +4,8 @@
  */
 package GUI;
 
-import Class.User;
 import Controllers.UserController;
 import Controllers.UserController.RegisterStatus;
-import data.FileController;
-import data.UserDB;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +23,7 @@ public class RogerCardGUI extends javax.swing.JFrame {
      */
     public RogerCardGUI() {
        
-        
+       
         
         initComponents();
     }
@@ -41,11 +37,10 @@ public class RogerCardGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        loginPanel1 = new javax.swing.JPanel();
-        emailLogTextField1 = new javax.swing.JTextField();
-        passLogTextField2 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        entrarButton2 = new javax.swing.JButton();
+        menuPanel1 = new javax.swing.JPanel();
+        cadastrarButton2 = new javax.swing.JButton();
+        logarButton2 = new javax.swing.JButton();
+        sairButton2 = new javax.swing.JButton();
         cadastroPanel1 = new javax.swing.JPanel();
         nameCadTextField1 = new javax.swing.JTextField();
         emailCadTextField2 = new javax.swing.JTextField();
@@ -53,76 +48,68 @@ public class RogerCardGUI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         erroLabel2 = new javax.swing.JLabel();
-
-        emailLogTextField1.setText("Email:");
-        emailLogTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 0, 0)));
-        emailLogTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                emailLogTextField1FocusGained(evt);
-            }
-        });
-        emailLogTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailLogTextField1ActionPerformed(evt);
-            }
-        });
-
-        passLogTextField2.setText("Senha: ");
-        passLogTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 0, 0)));
-        passLogTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                passLogTextField2FocusGained(evt);
-            }
-        });
-
-        jLabel2.setBackground(new java.awt.Color(255, 51, 51));
-        jLabel2.setText("Login");
-        jLabel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 0, 0)));
-
-        entrarButton2.setText("Entrar");
-        entrarButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 0, 0)));
-        entrarButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                entrarButton2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout loginPanel1Layout = new javax.swing.GroupLayout(loginPanel1);
-        loginPanel1.setLayout(loginPanel1Layout);
-        loginPanel1Layout.setHorizontalGroup(
-            loginPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPanel1Layout.createSequentialGroup()
-                .addGroup(loginPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(loginPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(passLogTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(loginPanel1Layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
-                        .addComponent(entrarButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(151, 151, 151))
-                    .addGroup(loginPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(loginPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(emailLogTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(14, 14, 14))
-        );
-        loginPanel1Layout.setVerticalGroup(
-            loginPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPanel1Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(emailLogTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(passLogTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
-                .addComponent(entrarButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                .addGap(23, 23, 23))
-        );
+        voltarButton2 = new javax.swing.JButton();
+        loginPanel1 = new javax.swing.JPanel();
+        emailLogTextField1 = new javax.swing.JTextField();
+        passLogTextField2 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        entrarButton2 = new javax.swing.JButton();
+        voltar2Button2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        cadastrarButton2.setText("Cadastrar");
+        cadastrarButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarButton2ActionPerformed(evt);
+            }
+        });
+
+        logarButton2.setText("Logar");
+        logarButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logarButton2ActionPerformed(evt);
+            }
+        });
+
+        sairButton2.setText("Sair");
+        sairButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout menuPanel1Layout = new javax.swing.GroupLayout(menuPanel1);
+        menuPanel1.setLayout(menuPanel1Layout);
+        menuPanel1Layout.setHorizontalGroup(
+            menuPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(cadastrarButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logarButton2)
+                .addGap(50, 50, 50))
+            .addGroup(menuPanel1Layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(sairButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(150, Short.MAX_VALUE))
+        );
+        menuPanel1Layout.setVerticalGroup(
+            menuPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuPanel1Layout.createSequentialGroup()
+                .addGap(143, 143, 143)
+                .addGroup(menuPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(logarButton2)
+                    .addComponent(cadastrarButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(sairButton2)
+                .addGap(37, 37, 37))
+        );
 
         nameCadTextField1.setText("Nome: ");
         nameCadTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -154,6 +141,13 @@ public class RogerCardGUI extends javax.swing.JFrame {
 
         jLabel1.setText("Cadastrar Usuário");
 
+        voltarButton2.setText("Voltar");
+        voltarButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout cadastroPanel1Layout = new javax.swing.GroupLayout(cadastroPanel1);
         cadastroPanel1.setLayout(cadastroPanel1Layout);
         cadastroPanel1Layout.setHorizontalGroup(
@@ -161,11 +155,13 @@ public class RogerCardGUI extends javax.swing.JFrame {
             .addGroup(cadastroPanel1Layout.createSequentialGroup()
                 .addGroup(cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(cadastroPanel1Layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
+                        .addGap(15, 15, 15)
+                        .addComponent(voltarButton2)
+                        .addGap(59, 59, 59)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
                         .addComponent(erroLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 10, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(cadastroPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,11 +184,95 @@ public class RogerCardGUI extends javax.swing.JFrame {
                 .addComponent(emailCadTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(passCadTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addGroup(cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(erroLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
-                .addGap(28, 28, 28))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastroPanel1Layout.createSequentialGroup()
+                        .addGroup(cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(erroLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(28, 28, 28))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastroPanel1Layout.createSequentialGroup()
+                        .addComponent(voltarButton2)
+                        .addContainerGap())))
+        );
+
+        loginPanel1.addHierarchyListener(new java.awt.event.HierarchyListener() {
+            public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
+                loginPanel1HierarchyChanged(evt);
+            }
+        });
+
+        emailLogTextField1.setText("Email:");
+        emailLogTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                emailLogTextField1FocusGained(evt);
+            }
+        });
+        emailLogTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailLogTextField1ActionPerformed(evt);
+            }
+        });
+
+        passLogTextField2.setText("Senha: ");
+        passLogTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passLogTextField2FocusGained(evt);
+            }
+        });
+
+        jLabel2.setBackground(new java.awt.Color(255, 51, 51));
+        jLabel2.setText("Login");
+
+        entrarButton2.setText("Entrar");
+        entrarButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entrarButton2ActionPerformed(evt);
+            }
+        });
+
+        voltar2Button2.setText("Voltar");
+        voltar2Button2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltar2Button2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout loginPanel1Layout = new javax.swing.GroupLayout(loginPanel1);
+        loginPanel1.setLayout(loginPanel1Layout);
+        loginPanel1Layout.setHorizontalGroup(
+            loginPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(loginPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(passLogTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(loginPanel1Layout.createSequentialGroup()
+                        .addComponent(voltar2Button2)
+                        .addGap(71, 71, 71)
+                        .addComponent(entrarButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(151, 151, 151))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailLogTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14))
+        );
+        loginPanel1Layout.setVerticalGroup(
+            loginPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginPanel1Layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(emailLogTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(passLogTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(loginPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loginPanel1Layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(entrarButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(23, 23, 23))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(voltar2Button2)
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -201,18 +281,38 @@ public class RogerCardGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 389, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(61, Short.MAX_VALUE)
+                    .addComponent(menuPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(cadastroPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(loginPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 315, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(19, Short.MAX_VALUE)
+                    .addComponent(menuPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(28, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(cadastroPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(loginPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -242,8 +342,15 @@ public class RogerCardGUI extends javax.swing.JFrame {
         case SUCCESS -> erroLabel2.setText("Usuário registrado com sucesso!");
         default -> erroLabel2.setText("Erro desconhecido");
         }
+        
+        cadastroPanel1.setVisible(false);
+        loginPanel1.setVisible(true);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+    
+    
     private void nameCadTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameCadTextField1FocusGained
         // TODO add your handling code here:
         nameCadTextField1.selectAll();
@@ -277,7 +384,13 @@ public class RogerCardGUI extends javax.swing.JFrame {
          //realiza a validação do login
          //adicionar um if para decidir o que sera feito na interface
         try {
-            userController.UserLogin(email,pass);
+            if(userController.UserLogin(email,pass)){
+            RogerCardLogged rogerCardGUI = new RogerCardLogged();
+            
+            rogerCardGUI.setVisible(true);
+            this.dispose();
+            }
+           
         } catch (SQLException ex) {
             Logger.getLogger(RogerCardGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -287,6 +400,49 @@ public class RogerCardGUI extends javax.swing.JFrame {
     private void emailLogTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailLogTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emailLogTextField1ActionPerformed
+
+    private void cadastrarButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButton2ActionPerformed
+        // TODO add your handling code here:
+        menuPanel1.setVisible(false);
+        loginPanel1.setVisible(false);
+        cadastroPanel1.setVisible(true);
+    }//GEN-LAST:event_cadastrarButton2ActionPerformed
+
+    private void loginPanel1HierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_loginPanel1HierarchyChanged
+    }//GEN-LAST:event_loginPanel1HierarchyChanged
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        cadastroPanel1.setVisible(false);
+        loginPanel1.setVisible(false);
+        menuPanel1.setVisible(true);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void logarButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logarButton2ActionPerformed
+        // TODO add your handling code here:
+        menuPanel1.setVisible(false);
+        cadastroPanel1.setVisible(false);
+        loginPanel1.setVisible(true);
+    }//GEN-LAST:event_logarButton2ActionPerformed
+
+    private void voltarButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButton2ActionPerformed
+        // TODO add your handling code here:
+        cadastroPanel1.setVisible(false);
+        loginPanel1.setVisible(false);
+        menuPanel1.setVisible(true);
+    }//GEN-LAST:event_voltarButton2ActionPerformed
+
+    private void voltar2Button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltar2Button2ActionPerformed
+        // TODO add your handling code here:
+        cadastroPanel1.setVisible(false);
+        loginPanel1.setVisible(false);
+        menuPanel1.setVisible(true);
+    }//GEN-LAST:event_voltar2Button2ActionPerformed
+
+    private void sairButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButton2ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_sairButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -324,6 +480,7 @@ public class RogerCardGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cadastrarButton2;
     private javax.swing.JPanel cadastroPanel1;
     private javax.swing.JTextField emailCadTextField2;
     private javax.swing.JTextField emailLogTextField1;
@@ -332,9 +489,14 @@ public class RogerCardGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton logarButton2;
     private javax.swing.JPanel loginPanel1;
+    private javax.swing.JPanel menuPanel1;
     private javax.swing.JTextField nameCadTextField1;
     private javax.swing.JTextField passCadTextField3;
     private javax.swing.JTextField passLogTextField2;
+    private javax.swing.JButton sairButton2;
+    private javax.swing.JButton voltar2Button2;
+    private javax.swing.JButton voltarButton2;
     // End of variables declaration//GEN-END:variables
 }

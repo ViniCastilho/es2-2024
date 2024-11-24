@@ -81,6 +81,18 @@ public RegisterStatus UserRegister(String name, String email, String pass) throw
       }
 
    }
+   
+   
+   public boolean alterar(String emailNovo, String emailAntigo) throws SQLException{
+      Connection connection = new FileController().getConnection();
+      UserDB userDB = new UserDB(connection);
+      if(userDB.select(emailAntigo) != null){
+          userDB.update(emailAntigo, null, emailNovo,null);
+      }else{
+          return false;
+        }
+      return true;
+   }
        
 }
     
