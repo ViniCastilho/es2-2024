@@ -5,6 +5,7 @@
 package Controllers;
 
 import Class.User;
+import Session.UserSession;
 import data.FileController;
 import data.UserDB;
 import java.sql.Connection;
@@ -75,6 +76,8 @@ public RegisterStatus UserRegister(String name, String email, String pass) throw
       User user;
       user = userDB.select(email);
       if(user.getPassword().equals(pass)){
+          UserSession userSession = new UserSession();
+          userSession.setUserEmail(email);
           return true;
       }else{
           return false;
@@ -83,7 +86,7 @@ public RegisterStatus UserRegister(String name, String email, String pass) throw
    }
    
    
-   public boolean alterar(String emailNovo, String emailAntigo) throws SQLException{
+   public boolean alterarEmail(String emailNovo, String emailAntigo) throws SQLException{
       Connection connection = new FileController().getConnection();
       UserDB userDB = new UserDB(connection);
       if(userDB.select(emailAntigo) != null){
@@ -92,6 +95,33 @@ public RegisterStatus UserRegister(String name, String email, String pass) throw
           return false;
         }
       return true;
+   }
+   
+   
+   public boolean alterarSenha(String senhaNova, String senhaAntiga, String emailAntigo) throws SQLException{
+       Connection connection = new FileController().getConnection();
+       UserDB userDB = new UserDB(connection);
+       User user = userDB.select(emailAntigo);
+       if(user.getPassword().equals(senhaAntiga)){
+            userDB.update(null, null, null, senhaNova);
+            return true;
+        }else{
+           return false;
+       }
+   }
+   
+   
+   public boolean excluirConta() throws SQLException{
+       UserSession userSession = new UserSession();
+       String loggedEmail = userSession.getUserEmail();
+       
+       Connection connection = new FileController().getConnection();
+       UserDB userDB = new UserDB(connection);
+       
+       if(userDB.delete(loggedEmail)){
+           return true;
+       }
+       return false;
    }
        
 }

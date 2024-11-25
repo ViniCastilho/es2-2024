@@ -4,6 +4,12 @@
  */
 package GUI;
 
+import Controllers.UserController;
+import java.awt.CardLayout;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Daza_
@@ -15,6 +21,11 @@ public class RogerCardLogged extends javax.swing.JFrame {
      */
     public RogerCardLogged() {
         initComponents();
+        
+        mainPanel.setLayout(new CardLayout());
+        mainPanel.add(alterarEmailPanel1, "alterarEmailPanel1");
+        mainPanel.add(alterarSenhaPanel1, "alterarSenhaPanel1");
+        
     }
 
     /**
@@ -26,16 +37,29 @@ public class RogerCardLogged extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        mainPanel = new javax.swing.JPanel();
         alterarEmailPanel1 = new javax.swing.JPanel();
         alterarEmailButton1 = new javax.swing.JButton();
         novoemailTextField2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         antigoemailTextField1 = new javax.swing.JTextField();
+        avisoLabel4 = new javax.swing.JLabel();
         alterarSenhaPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        senhaTextField1 = new javax.swing.JTextField();
+        senhaNovaTextField1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        emailTextField1 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        senhaAntigaTextField2 = new javax.swing.JTextField();
+        excluirContaPanel1 = new javax.swing.JPanel();
+        deleteAccountButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        exclusaoTextField1 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        warningLabel9 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -46,6 +70,19 @@ public class RogerCardLogged extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
+
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 281, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(mainPanel, "card4");
 
         alterarEmailButton1.setText("Alterar");
         alterarEmailButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -85,49 +122,76 @@ public class RogerCardLogged extends javax.swing.JFrame {
                 .addGroup(alterarEmailPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(alterarEmailPanel1Layout.createSequentialGroup()
                         .addGap(146, 146, 146)
-                        .addComponent(alterarEmailButton1))
+                        .addComponent(alterarEmailButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(avisoLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(alterarEmailPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addGroup(alterarEmailPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(novoemailTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                        .addGroup(alterarEmailPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
-                            .addComponent(antigoemailTextField1))))
-                .addContainerGap(74, Short.MAX_VALUE))
+                            .addComponent(antigoemailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(novoemailTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         alterarEmailPanel1Layout.setVerticalGroup(
             alterarEmailPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, alterarEmailPanel1Layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addContainerGap(46, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(antigoemailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(novoemailTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(alterarEmailButton1)
-                .addGap(57, 57, 57))
+                .addGap(40, 40, 40)
+                .addGroup(alterarEmailPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(alterarEmailButton1)
+                    .addComponent(avisoLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56))
         );
 
         getContentPane().add(alterarEmailPanel1, "card2");
 
         jLabel2.setText("Digite a Nova Senha");
 
-        senhaTextField1.setText("Senha:");
-        senhaTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        senhaNovaTextField1.setText("Nova senha:");
+        senhaNovaTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                senhaTextField1FocusGained(evt);
+                senhaNovaTextField1FocusGained(evt);
             }
         });
-        senhaTextField1.addActionListener(new java.awt.event.ActionListener() {
+        senhaNovaTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                senhaTextField1ActionPerformed(evt);
+                senhaNovaTextField1ActionPerformed(evt);
             }
         });
 
         jButton2.setText("Alterar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Digite seu email");
+
+        emailTextField1.setText("Email:");
+        emailTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                emailTextField1FocusGained(evt);
+            }
+        });
+
+        jLabel5.setText("Digite a Senha Antiga");
+
+        senhaAntigaTextField2.setText("Senha Atual");
+        senhaAntigaTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                senhaAntigaTextField2FocusGained(evt);
+            }
+        });
 
         javax.swing.GroupLayout alterarSenhaPanel1Layout = new javax.swing.GroupLayout(alterarSenhaPanel1);
         alterarSenhaPanel1.setLayout(alterarSenhaPanel1Layout);
@@ -136,28 +200,100 @@ public class RogerCardLogged extends javax.swing.JFrame {
             .addGroup(alterarSenhaPanel1Layout.createSequentialGroup()
                 .addGroup(alterarSenhaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(alterarSenhaPanel1Layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(jButton2))
+                    .addGroup(alterarSenhaPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(alterarSenhaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(senhaTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(alterarSenhaPanel1Layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addComponent(jButton2)))
+                            .addGroup(alterarSenhaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(senhaNovaTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(alterarSenhaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(senhaAntigaTextField2))
+                            .addComponent(emailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(123, Short.MAX_VALUE))
         );
         alterarSenhaPanel1Layout.setVerticalGroup(
             alterarSenhaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(alterarSenhaPanel1Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(51, 51, 51)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(emailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(senhaAntigaTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(senhaTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(senhaNovaTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
                 .addComponent(jButton2)
                 .addGap(27, 27, 27))
         );
 
         getContentPane().add(alterarSenhaPanel1, "card3");
+
+        deleteAccountButton1.setBackground(new java.awt.Color(255, 51, 51));
+        deleteAccountButton1.setText("EXCLUIR CONTA");
+        deleteAccountButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteAccountButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Para excluir a conta digite: \"CONFIRMAR EXCLUSAO\"  e clique no botão");
+
+        javax.swing.GroupLayout excluirContaPanel1Layout = new javax.swing.GroupLayout(excluirContaPanel1);
+        excluirContaPanel1.setLayout(excluirContaPanel1Layout);
+        excluirContaPanel1Layout.setHorizontalGroup(
+            excluirContaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(excluirContaPanel1Layout.createSequentialGroup()
+                .addGroup(excluirContaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(excluirContaPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(excluirContaPanel1Layout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addComponent(deleteAccountButton1)
+                        .addGroup(excluirContaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(excluirContaPanel1Layout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addComponent(jLabel8))
+                            .addGroup(excluirContaPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(warningLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(excluirContaPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(exclusaoTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(excluirContaPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        excluirContaPanel1Layout.setVerticalGroup(
+            excluirContaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, excluirContaPanel1Layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(exclusaoTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(excluirContaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deleteAccountButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(warningLabel9))
+                .addGap(35, 35, 35))
+        );
+
+        deleteAccountButton1.getAccessibleContext().setAccessibleDescription("");
+
+        getContentPane().add(excluirContaPanel1, "card5");
 
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
@@ -176,6 +312,11 @@ public class RogerCardLogged extends javax.swing.JFrame {
         jMenu3.add(alterarDadosMenuItem1);
 
         jMenuItem2.setText("Alterar Senha");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem2);
 
         excluirContaMenuItem3.setText("Excluir Conta");
@@ -189,22 +330,23 @@ public class RogerCardLogged extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void alterarDadosMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarDadosMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        
+        // TODO add your handling code here: 
+        CardLayout cardLayout = (CardLayout) mainPanel.getLayout();
+        cardLayout.show(mainPanel, "alterarEmailPanel1");
     }//GEN-LAST:event_alterarDadosMenuItem1ActionPerformed
 
     private void novoemailTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoemailTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_novoemailTextField2ActionPerformed
 
-    private void senhaTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaTextField1ActionPerformed
+    private void senhaNovaTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaNovaTextField1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_senhaTextField1ActionPerformed
+    }//GEN-LAST:event_senhaNovaTextField1ActionPerformed
 
-    private void senhaTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_senhaTextField1FocusGained
+    private void senhaNovaTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_senhaNovaTextField1FocusGained
         // TODO add your handling code here:
-        senhaTextField1.selectAll();
-    }//GEN-LAST:event_senhaTextField1FocusGained
+        senhaNovaTextField1.selectAll();
+    }//GEN-LAST:event_senhaNovaTextField1FocusGained
 
     private void novoemailTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_novoemailTextField2FocusGained
         // TODO add your handling code here:
@@ -213,6 +355,20 @@ public class RogerCardLogged extends javax.swing.JFrame {
 
     private void alterarEmailButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarEmailButton1ActionPerformed
         // TODO add your handling code here:
+        String emailAntigo = antigoemailTextField1.getText();
+        String emailNovo = novoemailTextField2.getText();
+        
+        UserController userController = new UserController();
+        try {
+            if(userController.alterarEmail(emailNovo, emailAntigo)){
+                avisoLabel4.setText("Email Alterado com Sucesso");
+            }else{
+                avisoLabel4.setText("Erro ao Alterar o email");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RogerCardLogged.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_alterarEmailButton1ActionPerformed
 
@@ -220,6 +376,55 @@ public class RogerCardLogged extends javax.swing.JFrame {
         // TODO add your handling code here:
         antigoemailTextField1.selectAll();
     }//GEN-LAST:event_antigoemailTextField1FocusGained
+
+    private void emailTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailTextField1FocusGained
+        // TODO add your handling code here:
+        emailTextField1.selectAll();
+    }//GEN-LAST:event_emailTextField1FocusGained
+
+    private void senhaAntigaTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_senhaAntigaTextField2FocusGained
+        // TODO add your handling code here:
+        senhaAntigaTextField2.selectAll();
+    }//GEN-LAST:event_senhaAntigaTextField2FocusGained
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String email = emailTextField1.getText();
+        String senhaAntiga = senhaAntigaTextField2.getText();
+        
+        String senhaNova  = senhaNovaTextField1.getText();
+        UserController userController = new UserController();
+        try {
+            userController.alterarSenha(email, senhaAntiga, senhaNova);
+        } catch (SQLException ex) {
+            Logger.getLogger(RogerCardLogged.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        CardLayout cardLayout = (CardLayout) mainPanel.getLayout();
+        cardLayout.show(mainPanel, "alterarSenhaPanel1");
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void deleteAccountButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAccountButton1ActionPerformed
+        // TODO add your handling code here:
+        String deleteAccount = deleteAccountButton1.getText();
+        if(deleteAccount.equals("CONFIRMAR EXCLUSAO")){
+            UserController userController = new UserController();
+            try {
+                if(userController.excluirConta()){
+                    RogerCardGUI rogerCardGUI = new RogerCardGUI();
+                    this.dispose();
+                }else{
+                    warningLabel9.setText("ERRO");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(RogerCardLogged.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }//GEN-LAST:event_deleteAccountButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,17 +467,30 @@ public class RogerCardLogged extends javax.swing.JFrame {
     private javax.swing.JPanel alterarEmailPanel1;
     private javax.swing.JPanel alterarSenhaPanel1;
     private javax.swing.JTextField antigoemailTextField1;
+    private javax.swing.JLabel avisoLabel4;
+    private javax.swing.JButton deleteAccountButton1;
+    private javax.swing.JTextField emailTextField1;
     private javax.swing.JMenuItem excluirContaMenuItem3;
+    private javax.swing.JPanel excluirContaPanel1;
+    private javax.swing.JTextField exclusaoTextField1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JPanel mainPanel;
     private javax.swing.JTextField novoemailTextField2;
-    private javax.swing.JTextField senhaTextField1;
+    private javax.swing.JTextField senhaAntigaTextField2;
+    private javax.swing.JTextField senhaNovaTextField1;
+    private javax.swing.JLabel warningLabel9;
     // End of variables declaration//GEN-END:variables
 }
