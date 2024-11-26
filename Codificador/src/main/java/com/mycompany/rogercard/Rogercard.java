@@ -4,6 +4,8 @@
 
 package com.mycompany.rogercard;
 
+import GUI.RogerCardGUI;
+
 /**
  *
  * @author Daza_
@@ -11,6 +13,7 @@ package com.mycompany.rogercard;
 public class Rogercard {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        RogerCardGUI r = new RogerCardGUI();
+        r.setVisible(true);
     }
 }

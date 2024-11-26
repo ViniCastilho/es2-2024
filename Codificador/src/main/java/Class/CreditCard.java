@@ -28,13 +28,7 @@ public class CreditCard {
         this.userid = userid;
     }
     
-    public void showInvoice(){
-        
-    }
-    
-    public void payInvoice(){
-        
-    }
+
 
     public String getNumber() {
         return number;
@@ -75,10 +69,6 @@ public class CreditCard {
     public void setUserid(int userid) {
         this.userid = userid;
     }
-    
-    
-
-    
     
     
     

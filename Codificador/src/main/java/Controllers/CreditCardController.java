@@ -6,12 +6,14 @@ package Controllers;
 
 import Class.CreditCard;
 import Class.User;
+import Session.UserSession;
 import data.CreditDB;
 import data.FileController;
 import data.UserDB;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -91,6 +93,28 @@ public class CreditCardController {
         
     }
     
- 
+    public List<CreditCard> visualizarCartao() throws SQLException{
+        UserSession userSession = new UserSession();
+        String loggedEmail = userSession.getUserEmail();
+        
+       Connection connection = new FileController().getConnection();
+       UserDB userDB = new UserDB(connection);
+        
+       int userid = userDB.select(loggedEmail).getId();
+       
+      
+       CreditDB creditCardDB = new CreditDB(connection);
+       return creditCardDB.selectAllCards(userid);
+        
+    }
+    
+    public String printCard() throws SQLException{
+        String cards = "";
+        List<CreditCard> card = visualizarCartao();
+        for (CreditCard c : card){
+            cards = cards + "Cartão: " + c.getNumber() + "\nLimite: " + c.getLimit() + "\nData de vencimento do cartão: " + c.getDueDate() + "\nValor da fatura: "  + c.getInvoiceValue();
+        }
+        return cards;
+    }
     
 }

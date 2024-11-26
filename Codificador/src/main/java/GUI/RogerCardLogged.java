@@ -4,9 +4,11 @@
  */
 package GUI;
 
+import Controllers.CreditCardController;
 import Controllers.UserController;
 import java.awt.CardLayout;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,7 +27,9 @@ public class RogerCardLogged extends javax.swing.JFrame {
         mainPanel.setLayout(new CardLayout());
         mainPanel.add(alterarEmailPanel1, "alterarEmailPanel1");
         mainPanel.add(alterarSenhaPanel1, "alterarSenhaPanel1");
-        
+        mainPanel.add(excluirContaPanel1, "excluirContaPanel1");
+        mainPanel.add(CartoesListPanel1, "CartoesListPanel1");
+        mainPanel.add(pagarFaturaPanel1, "pagarFaturaPanel1");
     }
 
     /**
@@ -53,6 +57,7 @@ public class RogerCardLogged extends javax.swing.JFrame {
         emailTextField1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         senhaAntigaTextField2 = new javax.swing.JTextField();
+        avisoLabel9 = new javax.swing.JLabel();
         excluirContaPanel1 = new javax.swing.JPanel();
         deleteAccountButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -60,13 +65,28 @@ public class RogerCardLogged extends javax.swing.JFrame {
         exclusaoTextField1 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         warningLabel9 = new javax.swing.JLabel();
+        CartoesListPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textcartoesTextArea1 = new javax.swing.JTextArea();
+        pagarFaturaPanel1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        cardNumberTextField1 = new javax.swing.JTextField();
+        dueDateTextField1 = new javax.swing.JTextField();
+        invoiceValueTextField1 = new javax.swing.JTextField();
+        pagarFaturaButton1 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        codFaturaTextField1 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
+        faturasCartaoMenu2 = new javax.swing.JMenu();
+        pagarFaturaMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         alterarDadosMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         excluirContaMenuItem3 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        cartoesMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
@@ -75,11 +95,11 @@ public class RogerCardLogged extends javax.swing.JFrame {
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 665, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 281, Short.MAX_VALUE)
+            .addGap(0, 289, Short.MAX_VALUE)
         );
 
         getContentPane().add(mainPanel, "card4");
@@ -132,12 +152,12 @@ public class RogerCardLogged extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(antigoemailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(novoemailTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
         alterarEmailPanel1Layout.setVerticalGroup(
             alterarEmailPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, alterarEmailPanel1Layout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(antigoemailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -153,6 +173,8 @@ public class RogerCardLogged extends javax.swing.JFrame {
         );
 
         getContentPane().add(alterarEmailPanel1, "card2");
+
+        alterarSenhaPanel1.setName("Alterar senha"); // NOI18N
 
         jLabel2.setText("Digite a Nova Senha");
 
@@ -201,19 +223,20 @@ public class RogerCardLogged extends javax.swing.JFrame {
                 .addGroup(alterarSenhaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(alterarSenhaPanel1Layout.createSequentialGroup()
                         .addGap(146, 146, 146)
-                        .addComponent(jButton2))
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(avisoLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(alterarSenhaPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(alterarSenhaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(alterarSenhaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(senhaNovaTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(alterarSenhaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(senhaAntigaTextField2))
                             .addComponent(emailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(246, Short.MAX_VALUE))
         );
         alterarSenhaPanel1Layout.setVerticalGroup(
             alterarSenhaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,7 +254,9 @@ public class RogerCardLogged extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(senhaNovaTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
-                .addComponent(jButton2)
+                .addGroup(alterarSenhaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(avisoLabel9))
                 .addGap(27, 27, 27))
         );
 
@@ -254,7 +279,7 @@ public class RogerCardLogged extends javax.swing.JFrame {
             .addGroup(excluirContaPanel1Layout.createSequentialGroup()
                 .addGroup(excluirContaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(excluirContaPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(398, Short.MAX_VALUE)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(excluirContaPanel1Layout.createSequentialGroup()
                         .addGap(138, 138, 138)
@@ -295,11 +320,105 @@ public class RogerCardLogged extends javax.swing.JFrame {
 
         getContentPane().add(excluirContaPanel1, "card5");
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        textcartoesTextArea1.setColumns(20);
+        textcartoesTextArea1.setRows(5);
+        jScrollPane1.setViewportView(textcartoesTextArea1);
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        javax.swing.GroupLayout CartoesListPanel1Layout = new javax.swing.GroupLayout(CartoesListPanel1);
+        CartoesListPanel1.setLayout(CartoesListPanel1Layout);
+        CartoesListPanel1Layout.setHorizontalGroup(
+            CartoesListPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CartoesListPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        CartoesListPanel1Layout.setVerticalGroup(
+            CartoesListPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CartoesListPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        getContentPane().add(CartoesListPanel1, "card6");
+
+        jLabel9.setText("Digite o número do Cartão:");
+
+        jLabel10.setText("Digite o Valor da Fatura:");
+
+        jLabel11.setText("Digite a data de validade do cartão :");
+
+        pagarFaturaButton1.setText("Pagar");
+        pagarFaturaButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pagarFaturaButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Código de Pagamento da Fatura");
+
+        javax.swing.GroupLayout pagarFaturaPanel1Layout = new javax.swing.GroupLayout(pagarFaturaPanel1);
+        pagarFaturaPanel1.setLayout(pagarFaturaPanel1Layout);
+        pagarFaturaPanel1Layout.setHorizontalGroup(
+            pagarFaturaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pagarFaturaPanel1Layout.createSequentialGroup()
+                .addGroup(pagarFaturaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pagarFaturaPanel1Layout.createSequentialGroup()
+                        .addGap(254, 254, 254)
+                        .addComponent(pagarFaturaButton1))
+                    .addGroup(pagarFaturaPanel1Layout.createSequentialGroup()
+                        .addGroup(pagarFaturaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cardNumberTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(invoiceValueTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pagarFaturaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel11)
+                            .addComponent(dueDateTextField1)
+                            .addComponent(codFaturaTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+        pagarFaturaPanel1Layout.setVerticalGroup(
+            pagarFaturaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pagarFaturaPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(pagarFaturaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pagarFaturaPanel1Layout.createSequentialGroup()
+                        .addGroup(pagarFaturaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pagarFaturaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cardNumberTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dueDateTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pagarFaturaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(invoiceValueTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(codFaturaTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addComponent(pagarFaturaButton1)
+                .addGap(14, 14, 14))
+        );
+
+        getContentPane().add(pagarFaturaPanel1, "card7");
+
+        faturasCartaoMenu2.setText("Faturas");
+
+        pagarFaturaMenuItem3.setText("Pagar Fatura");
+        pagarFaturaMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pagarFaturaMenuItem3ActionPerformed(evt);
+            }
+        });
+        faturasCartaoMenu2.add(pagarFaturaMenuItem3);
+
+        jMenuBar1.add(faturasCartaoMenu2);
 
         jMenu3.setText("Configurações");
 
@@ -320,9 +439,26 @@ public class RogerCardLogged extends javax.swing.JFrame {
         jMenu3.add(jMenuItem2);
 
         excluirContaMenuItem3.setText("Excluir Conta");
+        excluirContaMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirContaMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(excluirContaMenuItem3);
 
         jMenuBar1.add(jMenu3);
+
+        jMenu1.setText("Cartões");
+
+        cartoesMenuItem1.setText("Visualizar cartões");
+        cartoesMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cartoesMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(cartoesMenuItem1);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -395,7 +531,12 @@ public class RogerCardLogged extends javax.swing.JFrame {
         String senhaNova  = senhaNovaTextField1.getText();
         UserController userController = new UserController();
         try {
-            userController.alterarSenha(email, senhaAntiga, senhaNova);
+            if(userController.alterarSenha(senhaNova, senhaAntiga, email)){
+                avisoLabel9.setText("Senha Alterada com Sucesso");
+                
+            }else{
+                avisoLabel9.setText("Erro ao alterar a senha");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(RogerCardLogged.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -409,12 +550,13 @@ public class RogerCardLogged extends javax.swing.JFrame {
 
     private void deleteAccountButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAccountButton1ActionPerformed
         // TODO add your handling code here:
-        String deleteAccount = deleteAccountButton1.getText();
+        String deleteAccount = exclusaoTextField1.getText();
         if(deleteAccount.equals("CONFIRMAR EXCLUSAO")){
             UserController userController = new UserController();
             try {
                 if(userController.excluirConta()){
                     RogerCardGUI rogerCardGUI = new RogerCardGUI();
+                    rogerCardGUI.setVisible(true);
                     this.dispose();
                 }else{
                     warningLabel9.setText("ERRO");
@@ -425,6 +567,46 @@ public class RogerCardLogged extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_deleteAccountButton1ActionPerformed
+
+    private void excluirContaMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirContaMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        CardLayout cardLayout = (CardLayout) mainPanel.getLayout();
+        cardLayout.show(mainPanel, "excluirContaPanel1");
+    }//GEN-LAST:event_excluirContaMenuItem3ActionPerformed
+
+    private void cartoesMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartoesMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        CardLayout cardLayout = (CardLayout) mainPanel.getLayout();
+        cardLayout.show(mainPanel, "CartoesListPanel1");
+        
+        CreditCardController creditCardController = new CreditCardController();
+        String printCard = "";
+        try {
+            printCard = creditCardController.printCard();
+        } catch (SQLException ex) {
+            Logger.getLogger(RogerCardLogged.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        textcartoesTextArea1.setText(printCard);
+        
+    }//GEN-LAST:event_cartoesMenuItem1ActionPerformed
+
+    private void pagarFaturaMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagarFaturaMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        CardLayout cardLayout = (CardLayout) mainPanel.getLayout();
+        cardLayout.show(mainPanel, "pagarFaturaPanel1");
+    }//GEN-LAST:event_pagarFaturaMenuItem3ActionPerformed
+
+    private void pagarFaturaButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagarFaturaButton1ActionPerformed
+        // TODO add your handling code here:
+        String creditNumber = cardNumberTextField1.getText();
+        String creditDueDate = dueDateTextField1.getText();
+        String creditInvoice = invoiceValueTextField1.getText();
+        String codFatura = codFaturaTextField1.getText();
+        
+        
+        
+        
+    }//GEN-LAST:event_pagarFaturaButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -462,19 +644,30 @@ public class RogerCardLogged extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel CartoesListPanel1;
     private javax.swing.JMenuItem alterarDadosMenuItem1;
     private javax.swing.JButton alterarEmailButton1;
     private javax.swing.JPanel alterarEmailPanel1;
     private javax.swing.JPanel alterarSenhaPanel1;
     private javax.swing.JTextField antigoemailTextField1;
     private javax.swing.JLabel avisoLabel4;
+    private javax.swing.JLabel avisoLabel9;
+    private javax.swing.JTextField cardNumberTextField1;
+    private javax.swing.JMenuItem cartoesMenuItem1;
+    private javax.swing.JTextField codFaturaTextField1;
     private javax.swing.JButton deleteAccountButton1;
+    private javax.swing.JTextField dueDateTextField1;
     private javax.swing.JTextField emailTextField1;
     private javax.swing.JMenuItem excluirContaMenuItem3;
     private javax.swing.JPanel excluirContaPanel1;
     private javax.swing.JTextField exclusaoTextField1;
+    private javax.swing.JMenu faturasCartaoMenu2;
+    private javax.swing.JTextField invoiceValueTextField1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -482,15 +675,20 @@ public class RogerCardLogged extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JTextField novoemailTextField2;
+    private javax.swing.JButton pagarFaturaButton1;
+    private javax.swing.JMenuItem pagarFaturaMenuItem3;
+    private javax.swing.JPanel pagarFaturaPanel1;
     private javax.swing.JTextField senhaAntigaTextField2;
     private javax.swing.JTextField senhaNovaTextField1;
+    private javax.swing.JTextArea textcartoesTextArea1;
     private javax.swing.JLabel warningLabel9;
     // End of variables declaration//GEN-END:variables
 }

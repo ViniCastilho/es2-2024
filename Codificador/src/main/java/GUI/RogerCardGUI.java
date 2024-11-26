@@ -37,10 +37,12 @@ public class RogerCardGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        menuPanel1 = new javax.swing.JPanel();
-        cadastrarButton2 = new javax.swing.JButton();
-        logarButton2 = new javax.swing.JButton();
-        sairButton2 = new javax.swing.JButton();
+        loginPanel1 = new javax.swing.JPanel();
+        emailLogTextField1 = new javax.swing.JTextField();
+        passLogTextField2 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        entrarButton2 = new javax.swing.JButton();
+        voltar2Button2 = new javax.swing.JButton();
         cadastroPanel1 = new javax.swing.JPanel();
         nameCadTextField1 = new javax.swing.JTextField();
         emailCadTextField2 = new javax.swing.JTextField();
@@ -49,12 +51,11 @@ public class RogerCardGUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         erroLabel2 = new javax.swing.JLabel();
         voltarButton2 = new javax.swing.JButton();
-        loginPanel1 = new javax.swing.JPanel();
-        emailLogTextField1 = new javax.swing.JTextField();
-        passLogTextField2 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        entrarButton2 = new javax.swing.JButton();
-        voltar2Button2 = new javax.swing.JButton();
+        menuPanel1 = new javax.swing.JPanel();
+        cadastrarButton2 = new javax.swing.JButton();
+        logarButton2 = new javax.swing.JButton();
+        sairButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -62,139 +63,6 @@ public class RogerCardGUI extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
-
-        cadastrarButton2.setText("Cadastrar");
-        cadastrarButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastrarButton2ActionPerformed(evt);
-            }
-        });
-
-        logarButton2.setText("Logar");
-        logarButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logarButton2ActionPerformed(evt);
-            }
-        });
-
-        sairButton2.setText("Sair");
-        sairButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sairButton2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout menuPanel1Layout = new javax.swing.GroupLayout(menuPanel1);
-        menuPanel1.setLayout(menuPanel1Layout);
-        menuPanel1Layout.setHorizontalGroup(
-            menuPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(cadastrarButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(logarButton2)
-                .addGap(50, 50, 50))
-            .addGroup(menuPanel1Layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(sairButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(150, Short.MAX_VALUE))
-        );
-        menuPanel1Layout.setVerticalGroup(
-            menuPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuPanel1Layout.createSequentialGroup()
-                .addGap(143, 143, 143)
-                .addGroup(menuPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(logarButton2)
-                    .addComponent(cadastrarButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(sairButton2)
-                .addGap(37, 37, 37))
-        );
-
-        nameCadTextField1.setText("Nome: ");
-        nameCadTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                nameCadTextField1FocusGained(evt);
-            }
-        });
-
-        emailCadTextField2.setText("Email: ");
-        emailCadTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                emailCadTextField2FocusGained(evt);
-            }
-        });
-
-        passCadTextField3.setText("Senha: ");
-        passCadTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                passCadTextField3FocusGained(evt);
-            }
-        });
-
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Cadastrar Usuário");
-
-        voltarButton2.setText("Voltar");
-        voltarButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarButton2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout cadastroPanel1Layout = new javax.swing.GroupLayout(cadastroPanel1);
-        cadastroPanel1.setLayout(cadastroPanel1Layout);
-        cadastroPanel1Layout.setHorizontalGroup(
-            cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cadastroPanel1Layout.createSequentialGroup()
-                .addGroup(cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cadastroPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(voltarButton2)
-                        .addGap(59, 59, 59)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(erroLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(cadastroPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(emailCadTextField2)
-                            .addComponent(nameCadTextField1)
-                            .addGroup(cadastroPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(passCadTextField3))))
-                .addContainerGap())
-        );
-        cadastroPanel1Layout.setVerticalGroup(
-            cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastroPanel1Layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(nameCadTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(emailCadTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(passCadTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastroPanel1Layout.createSequentialGroup()
-                        .addGroup(cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(erroLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastroPanel1Layout.createSequentialGroup()
-                        .addComponent(voltarButton2)
-                        .addContainerGap())))
-        );
 
         loginPanel1.addHierarchyListener(new java.awt.event.HierarchyListener() {
             public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
@@ -249,11 +117,11 @@ public class RogerCardGUI extends javax.swing.JFrame {
                     .addGroup(loginPanel1Layout.createSequentialGroup()
                         .addComponent(voltar2Button2)
                         .addGap(71, 71, 71)
-                        .addComponent(entrarButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(entrarButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
                         .addGap(151, 151, 151))
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emailLogTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14))
+                .addContainerGap())
         );
         loginPanel1Layout.setVerticalGroup(
             loginPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,45 +143,186 @@ public class RogerCardGUI extends javax.swing.JFrame {
                         .addContainerGap())))
         );
 
+        nameCadTextField1.setText("Nome: ");
+        nameCadTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nameCadTextField1FocusGained(evt);
+            }
+        });
+
+        emailCadTextField2.setText("Email: ");
+        emailCadTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                emailCadTextField2FocusGained(evt);
+            }
+        });
+
+        passCadTextField3.setText("Senha: ");
+        passCadTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passCadTextField3FocusGained(evt);
+            }
+        });
+
+        jButton1.setText("Cadastrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Cadastrar Usuário");
+
+        voltarButton2.setText("Voltar");
+        voltarButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout cadastroPanel1Layout = new javax.swing.GroupLayout(cadastroPanel1);
+        cadastroPanel1.setLayout(cadastroPanel1Layout);
+        cadastroPanel1Layout.setHorizontalGroup(
+            cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cadastroPanel1Layout.createSequentialGroup()
+                .addGroup(cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cadastroPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(voltarButton2)
+                        .addGap(59, 59, 59)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(erroLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 33, Short.MAX_VALUE))
+                    .addGroup(cadastroPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(emailCadTextField2)
+                            .addComponent(nameCadTextField1)
+                            .addGroup(cadastroPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(passCadTextField3))))
+                .addContainerGap())
+        );
+        cadastroPanel1Layout.setVerticalGroup(
+            cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastroPanel1Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(nameCadTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(emailCadTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(passCadTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addGroup(cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastroPanel1Layout.createSequentialGroup()
+                        .addGroup(cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(erroLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(28, 28, 28))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastroPanel1Layout.createSequentialGroup()
+                        .addComponent(voltarButton2)
+                        .addContainerGap())))
+        );
+
+        menuPanel1.setEnabled(false);
+        menuPanel1.setName("Início"); // NOI18N
+
+        cadastrarButton2.setText("Cadastrar");
+        cadastrarButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarButton2ActionPerformed(evt);
+            }
+        });
+
+        logarButton2.setText("Logar");
+        logarButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logarButton2ActionPerformed(evt);
+            }
+        });
+
+        sairButton2.setText("Sair");
+        sairButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Bem vindo a RogerCard, o que deseja fazer?");
+
+        javax.swing.GroupLayout menuPanel1Layout = new javax.swing.GroupLayout(menuPanel1);
+        menuPanel1.setLayout(menuPanel1Layout);
+        menuPanel1Layout.setHorizontalGroup(
+            menuPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(cadastrarButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logarButton2)
+                .addGap(50, 50, 50))
+            .addGroup(menuPanel1Layout.createSequentialGroup()
+                .addGroup(menuPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuPanel1Layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(sairButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menuPanel1Layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(jLabel3)))
+                .addContainerGap(111, Short.MAX_VALUE))
+        );
+        menuPanel1Layout.setVerticalGroup(
+            menuPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuPanel1Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(jLabel3)
+                .addGap(72, 72, 72)
+                .addGroup(menuPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(logarButton2)
+                    .addComponent(cadastrarButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addComponent(sairButton2)
+                .addGap(37, 37, 37))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 389, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(menuPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(61, Short.MAX_VALUE)
-                    .addComponent(menuPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(cadastroPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(cadastroPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(13, 13, 13)
                     .addComponent(loginPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap(13, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 315, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(19, Short.MAX_VALUE)
-                    .addComponent(menuPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(28, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(menuPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(cadastroPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap()
+                    .addComponent(cadastroPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(loginPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(14, 14, 14)
+                    .addComponent(loginPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, Short.MAX_VALUE)
+                    .addGap(15, 15, 15)))
         );
 
         pack();
@@ -403,9 +412,10 @@ public class RogerCardGUI extends javax.swing.JFrame {
 
     private void cadastrarButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButton2ActionPerformed
         // TODO add your handling code here:
+       cadastroPanel1.setVisible(true);
         menuPanel1.setVisible(false);
         loginPanel1.setVisible(false);
-        cadastroPanel1.setVisible(true);
+        
     }//GEN-LAST:event_cadastrarButton2ActionPerformed
 
     private void loginPanel1HierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_loginPanel1HierarchyChanged
@@ -489,6 +499,7 @@ public class RogerCardGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton logarButton2;
     private javax.swing.JPanel loginPanel1;
     private javax.swing.JPanel menuPanel1;

@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -105,7 +107,7 @@ public class CreditDB {
         statement.setString(parameterIndex,number);
         
         statement.executeUpdate();
-        connection.close();
+        
     }
     
     //trocado para boolean para realizar tratamento de erros no controlador e integrar isso a GUI
@@ -127,4 +129,33 @@ public class CreditDB {
         }   
         
     }
+    
+    public List<CreditCard> selectAllCards(int userid) throws SQLException{
+        List<CreditCard>  creditCard = new ArrayList<>();
+        
+        String sql = "SELECT creditcardnumber, creditcardlimit, creditcardduedate, creditcardinvoicevalue " + 
+                "FROM creditcarddb " + "WHERE userid = ?"; 
+        
+        try(PreparedStatement statement = connection.prepareStatement(sql)){
+            statement.setInt(1, userid);
+
+            try(ResultSet resultSet = statement.executeQuery()){       
+                while(resultSet.next()){
+                    CreditCard credit = new CreditCard(
+                    resultSet.getString("creditcardnumber"),
+                    resultSet.getDouble("creditcardlimit"),
+                    resultSet.getDate("creditcardduedate").toLocalDate(),
+                    resultSet.getDouble("creditcardinvoicevalue"),
+                    userid
+                );
+                    creditCard.add(credit);
+                }
+            }
+        }catch(SQLException e){
+               e.printStackTrace();
+        }
+        return creditCard;
+        
+    }
+    
 }

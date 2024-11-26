@@ -103,7 +103,7 @@ public RegisterStatus UserRegister(String name, String email, String pass) throw
        UserDB userDB = new UserDB(connection);
        User user = userDB.select(emailAntigo);
        if(user.getPassword().equals(senhaAntiga)){
-            userDB.update(null, null, null, senhaNova);
+            userDB.update(emailAntigo, null, null, senhaNova);
             return true;
         }else{
            return false;
@@ -114,7 +114,6 @@ public RegisterStatus UserRegister(String name, String email, String pass) throw
    public boolean excluirConta() throws SQLException{
        UserSession userSession = new UserSession();
        String loggedEmail = userSession.getUserEmail();
-       
        Connection connection = new FileController().getConnection();
        UserDB userDB = new UserDB(connection);
        

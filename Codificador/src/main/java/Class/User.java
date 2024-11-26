@@ -53,10 +53,6 @@ public class User {
         this.password = password;
     }
     
-    
-    public void changePassword(){
-        
-    }
 
     public int getId() {
         return id;
@@ -66,14 +62,7 @@ public class User {
         this.id = id;
     }
     
-    
-    
 
-    @Override
-    public String toString() {
-        return "User{" + "name=" + name + ", email=" + email + ", password=" + password + '}';
-    }
-    
     
     
     
