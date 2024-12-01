@@ -7,6 +7,8 @@ Session\UserSession.class
 Class\CreditCard.class
 GUI\RogerCardGUI$4.class
 GUI\RogerCardLogged$14.class
+data\InvoiceDB.class
+Controllers\InvoiceController.class
 GUI\RogerCardGUI$12.class
 GUI\RogerCardLogged$8.class
 GUI\RogerCardGUI$10.class
@@ -15,6 +17,7 @@ Controllers\UserController$RegisterStatus.class
 GUI\RogerCardLogged$5.class
 GUI\RogerCardLogged$16.class
 GUI\RogerCardLogged$2.class
+Class\Invoice.class
 data\FileController.class
 GUI\RogerCardGUI$13.class
 GUI\RogerCardGUI$3.class
@@ -32,13 +35,14 @@ GUI\RogerCardLogged$15.class
 GUI\RogerCardGUI$14.class
 GUI\RogerCardLogged$6.class
 GUI\RogerCardGUI$5.class
+GUI\RogerCardLogged$19.class
 Class\Promotion.class
 GUI\RogerCardLogged$3.class
 GUI\RogerCardGUI$17.class
 GUI\RogerCardGUI$2.class
 Class\Points.class
-GUI\RogerCardGUI$8.class
 GUI\RogerCardGUI$15.class
+GUI\RogerCardGUI$8.class
 Static\Static.class
 GUI\RogerCardGUI$1.class
 com\mycompany\rogercard\Rogercard.class
@@ -49,3 +53,4 @@ GUI\RogerCardLogged$7.class
 Controllers\CreditCardController.class
 Class\User.class
 GUI\RogerCardLogged$4.class
+GUI\RogerCardLogged$18.class

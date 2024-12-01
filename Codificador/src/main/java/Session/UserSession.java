@@ -4,12 +4,16 @@
  */
 package Session;
 
+import Class.CreditCard;
+
+
 /**
  *
  * @author Daza_
  */
 public class UserSession {
     private static String userEmail;
+
 
     public static void setUserEmail(String email) {
         userEmail = email;
@@ -18,4 +22,7 @@ public class UserSession {
     public static String getUserEmail() {
         return userEmail;
     }
+
+ 
+    
 }

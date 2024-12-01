@@ -91,6 +91,8 @@ public RegisterStatus UserRegister(String name, String email, String pass) throw
       UserDB userDB = new UserDB(connection);
       if(userDB.select(emailAntigo) != null){
           userDB.update(emailAntigo, null, emailNovo,null);
+          UserSession userSession = new UserSession();
+          userSession.setUserEmail(emailNovo);
       }else{
           return false;
         }

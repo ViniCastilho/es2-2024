@@ -41,12 +41,11 @@ public class UserDB {
         ResultSet resultSet = statement.executeQuery();
         
         if(resultSet.next()){
-            int userid = resultSet.getInt("userid");
             String username = resultSet.getString("username");
             String useremail = resultSet.getString("useremail");
             String userpassword = resultSet.getString("userpassword");
             
-            User user = new User(userid,username,useremail,userpassword);
+            User user = new User(username,useremail,userpassword);
             return user;
         }
    

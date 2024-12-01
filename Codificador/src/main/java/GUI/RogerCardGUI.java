@@ -7,6 +7,7 @@ package GUI;
 import Controllers.UserController;
 import Controllers.UserController.RegisterStatus;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -394,7 +395,12 @@ public class RogerCardGUI extends javax.swing.JFrame {
          //adicionar um if para decidir o que sera feito na interface
         try {
             if(userController.UserLogin(email,pass)){
-            RogerCardLogged rogerCardGUI = new RogerCardLogged();
+            RogerCardLogged rogerCardGUI = null;
+                try {
+                    rogerCardGUI = new RogerCardLogged();
+                } catch (ParseException ex) {
+                    Logger.getLogger(RogerCardGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
             
             rogerCardGUI.setVisible(true);
             this.dispose();

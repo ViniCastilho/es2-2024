@@ -13,7 +13,6 @@ import data.UserDB;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -76,45 +75,53 @@ public class CreditCardController {
        UserDB userDB = new UserDB(connection);
        User user = userDB.select(email);
        
-       int userID = user.getId();
+       String useremail = user.getEmail();
        
        
        
        String cardNumber = generateCardNumber();
-       Double cardLimit = 500.00;
+       Double cardLimit = 1000.00;
        LocalDate cardDueDate = generateDueDate();
        Double cardInvoiceValue = 0.00;
        
-       CreditCard creditCard = new CreditCard(cardNumber,cardLimit,cardDueDate,cardInvoiceValue,userID);
+       CreditCard creditCard = new CreditCard(cardNumber,cardLimit,cardDueDate,cardInvoiceValue);
        
        CreditDB creditDB = new CreditDB(connection);
-       creditDB.insert(creditCard);
+       creditDB.insert(creditCard,useremail);
         
         
     }
     
-    public List<CreditCard> visualizarCartao() throws SQLException{
+    public CreditCard visualizarCartao() throws SQLException{
         UserSession userSession = new UserSession();
         String loggedEmail = userSession.getUserEmail();
         
        Connection connection = new FileController().getConnection();
        UserDB userDB = new UserDB(connection);
         
-       int userid = userDB.select(loggedEmail).getId();
+       String userEmail = userDB.select(loggedEmail).getEmail();
        
       
        CreditDB creditCardDB = new CreditDB(connection);
-       return creditCardDB.selectAllCards(userid);
+       return creditCardDB.selectCardByUserEmail(userEmail);
         
     }
     
-    public String printCard() throws SQLException{
-        String cards = "";
-        List<CreditCard> card = visualizarCartao();
-        for (CreditCard c : card){
-            cards = cards + "Cartão: " + c.getNumber() + "\nLimite: " + c.getLimit() + "\nData de vencimento do cartão: " + c.getDueDate() + "\nValor da fatura: "  + c.getInvoiceValue();
-        }
-        return cards;
+    public String printCard() throws SQLException {
+    String cardDetails = "";  // Mudamos o nome da variável para representar o cartão
+    CreditCard card = visualizarCartao();  // Obtém o cartão de crédito único
+
+    if (card != null) {
+        // Construímos a string com os detalhes do cartão
+        cardDetails = "Cartão: " + card.getNumber() + "\n" +
+                      "Limite: " + card.getLimit() + "\n" +
+                      "Data de vencimento do cartão: " + card.getDueDate() + "\n" +
+                      "Valor da fatura: " + card.getInvoiceValue();
+    } else {
+        cardDetails = "Nenhum cartão encontrado.";
     }
-    
+
+    return cardDetails;
+}
+  
 }

@@ -25,11 +25,11 @@ public class CreditDB {
         this.connection = connection;
     }
     
-    public void insert(CreditCard creditCard) throws SQLException{
-
+    public void insert(CreditCard creditCard,String useremail) throws SQLException{
+        
         try (connection) {
-            String sq1 = "insert into creditcarddb(creditcardnumber,creditcardlimit,creditcardduedate,creditcardinvoicevalue,userid) "
-                    + "values('"+creditCard.getNumber()+"','"+creditCard.getLimit()+"','"+creditCard.getDueDate()+"','"+creditCard.getInvoiceValue()+"','"+creditCard.getUserid()+"');";
+            String sq1 = "insert into creditcarddb(creditcardnumber,creditcardlimit,creditcardduedate,creditcardinvoicevalue,useremailfk) "
+                    + "values('"+creditCard.getNumber()+"','"+creditCard.getLimit()+"','"+creditCard.getDueDate()+"','"+creditCard.getInvoiceValue()+"','"+useremail+"');";
             
             PreparedStatement statement = connection.prepareStatement(sq1);
             statement.execute();
@@ -58,10 +58,11 @@ public class CreditDB {
                     }
                     
                     Double creditCardInvoiceValue = resultSet.getDouble("creditcardinvoicevalue");
+                   
                     
-                    int userid = resultSet.getInt("userid");
                     
-                    CreditCard creditCard = new CreditCard(creditCardNumber, creditCardLimit, creditCardDueDate, creditCardInvoiceValue,userid);
+                    
+                    CreditCard creditCard = new CreditCard(creditCardNumber, creditCardLimit, creditCardDueDate, creditCardInvoiceValue);
                     return creditCard;
                 }
             }
@@ -69,6 +70,10 @@ public class CreditDB {
         
         return null; // Se não encontrar o cartão de crédito
     }
+    
+    
+    
+
     
     public void update(String number, String newLimit,String newDueDate, String newInvoiceValue) throws SQLException{
         
@@ -112,7 +117,7 @@ public class CreditDB {
     
     //trocado para boolean para realizar tratamento de erros no controlador e integrar isso a GUI
     public boolean delete(String number) throws SQLException{
-        String sql = "DELETE FROM creditcarddb WHERE number = ?";
+        String sql = "DELETE FROM creditcarddb WHERE creditcardnumber = ?";
         
         PreparedStatement statement = connection.prepareStatement(sql);
         
@@ -130,32 +135,31 @@ public class CreditDB {
         
     }
     
-    public List<CreditCard> selectAllCards(int userid) throws SQLException{
-        List<CreditCard>  creditCard = new ArrayList<>();
-        
-        String sql = "SELECT creditcardnumber, creditcardlimit, creditcardduedate, creditcardinvoicevalue " + 
-                "FROM creditcarddb " + "WHERE userid = ?"; 
-        
-        try(PreparedStatement statement = connection.prepareStatement(sql)){
-            statement.setInt(1, userid);
+    public CreditCard selectCardByUserEmail(String useremail) throws SQLException {
+    CreditCard creditCard = null; // Inicializa como null caso não encontre um cartão
 
-            try(ResultSet resultSet = statement.executeQuery()){       
-                while(resultSet.next()){
-                    CreditCard credit = new CreditCard(
-                    resultSet.getString("creditcardnumber"),
-                    resultSet.getDouble("creditcardlimit"),
-                    resultSet.getDate("creditcardduedate").toLocalDate(),
-                    resultSet.getDouble("creditcardinvoicevalue"),
-                    userid
+    String sql = "SELECT creditcardnumber, creditcardlimit, creditcardduedate, creditcardinvoicevalue " + 
+                 "FROM creditcarddb WHERE useremailfk = ? LIMIT 1"; // LIMIT 1 garante que você pega apenas um cartão
+
+    try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        statement.setString(1, useremail);
+
+        try (ResultSet resultSet = statement.executeQuery()) {
+            if (resultSet.next()) { // Verifica se há pelo menos um cartão
+                // Cria o objeto CreditCard com os dados retornados
+                creditCard = new CreditCard(
+                        resultSet.getString("creditcardnumber"),
+                        resultSet.getDouble("creditcardlimit"),
+                        resultSet.getDate("creditcardduedate").toLocalDate(),
+                        resultSet.getDouble("creditcardinvoicevalue")
                 );
-                    creditCard.add(credit);
-                }
             }
-        }catch(SQLException e){
-               e.printStackTrace();
         }
-        return creditCard;
-        
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+
+    return creditCard; // Retorna o cartão encontrado ou null
+}
     
 }

@@ -6,6 +6,8 @@ package Class;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -17,15 +19,14 @@ public class CreditCard {
     private double limit; 
     private LocalDate dueDate;
     private double invoiceValue;
-    private int userid;
+    private List<Invoice> invoice;
     
-    
-    public CreditCard(String number, double limit, LocalDate dueDate, double invoiceValue,int userid){
+    public CreditCard(String number, double limit, LocalDate dueDate, double invoiceValue){
         this.number = number;
         this.limit = limit; 
         this.dueDate = dueDate;
         this.invoiceValue = invoiceValue;
-        this.userid = userid;
+        this.invoice = new ArrayList<>();
     }
     
 
@@ -62,14 +63,20 @@ public class CreditCard {
         this.invoiceValue = invoiceValue;
     }
 
-    public int getUserid() {
-        return userid;
+    public List<Invoice> getInvoice() {
+        return invoice;
     }
 
-    public void setUserid(int userid) {
-        this.userid = userid;
+    public void setInvoice(List<Invoice> invoice) {
+        this.invoice = invoice;
+    }
+    
+    public void addInvoice(Invoice invoice){
+        this.invoice.add(invoice);
     }
     
     
     
+    
+
 }
