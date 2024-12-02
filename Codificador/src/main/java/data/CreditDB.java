@@ -27,13 +27,13 @@ public class CreditDB {
     
     public void insert(CreditCard creditCard,String useremail) throws SQLException{
         
-        try (connection) {
+      
             String sq1 = "insert into creditcarddb(creditcardnumber,creditcardlimit,creditcardduedate,creditcardinvoicevalue,useremailfk) "
                     + "values('"+creditCard.getNumber()+"','"+creditCard.getLimit()+"','"+creditCard.getDueDate()+"','"+creditCard.getInvoiceValue()+"','"+useremail+"');";
             
             PreparedStatement statement = connection.prepareStatement(sq1);
             statement.execute();
-        }
+        
   
         }
     

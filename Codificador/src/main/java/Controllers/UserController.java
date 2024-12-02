@@ -100,12 +100,17 @@ public RegisterStatus UserRegister(String name, String email, String pass) throw
    }
    
    
-   public boolean alterarSenha(String senhaNova, String senhaAntiga, String emailAntigo) throws SQLException{
+   public boolean alterarSenha(String senhaNova, String senhaAntiga) throws SQLException{
+      
        Connection connection = new FileController().getConnection();
        UserDB userDB = new UserDB(connection);
-       User user = userDB.select(emailAntigo);
+       
+       UserSession userSession = new UserSession();
+       String loggedEmail = userSession.getUserEmail();
+       
+       User user = userDB.select(loggedEmail);
        if(user.getPassword().equals(senhaAntiga)){
-            userDB.update(emailAntigo, null, null, senhaNova);
+            userDB.update(loggedEmail, null, null, senhaNova);
             return true;
         }else{
            return false;
@@ -124,6 +129,11 @@ public RegisterStatus UserRegister(String name, String email, String pass) throw
        }
        return false;
    }
+   
+   
+   
+   
+   
        
 }
     

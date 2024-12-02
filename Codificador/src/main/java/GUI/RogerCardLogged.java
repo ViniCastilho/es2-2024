@@ -36,7 +36,8 @@ public class RogerCardLogged extends javax.swing.JFrame {
         mainPanel.add(CartoesListPanel1, "CartoesListPanel1");
         mainPanel.add(pagarFaturaPanel1, "pagarFaturaPanel1");
         mainPanel.add(OpenInvoicePanel1, "OpenInvoicePanel1");
-        
+        mainPanel.add(closeInvoicePanel1, "closeInvoicePanel1");
+        mainPanel.add(payInvoicePanel1, "payInvoicePanel1");
        
         MaskFormatter mascara;
         mascara = new MaskFormatter("##/##/####");
@@ -66,8 +67,6 @@ public class RogerCardLogged extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         senhaNovaTextField1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        emailTextField1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         senhaAntigaTextField2 = new javax.swing.JTextField();
         avisoLabel9 = new javax.swing.JLabel();
@@ -92,10 +91,19 @@ public class RogerCardLogged extends javax.swing.JFrame {
         OpenInvoicePanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         textinvoiceopenTextArea1 = new javax.swing.JTextArea();
+        closeInvoicePanel1 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        closeInvoiceTextArea1 = new javax.swing.JTextArea();
+        payInvoicePanel1 = new javax.swing.JPanel();
+        invoiceTotalTextField1 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        applyDiscountCheckBox1 = new javax.swing.JCheckBox();
         jMenuBar1 = new javax.swing.JMenuBar();
         faturasCartaoMenu2 = new javax.swing.JMenu();
         registrarFaturaMenuItem3 = new javax.swing.JMenuItem();
+        openInvoiceMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        closeInvoiceMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         alterarDadosMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -212,15 +220,6 @@ public class RogerCardLogged extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Digite seu email");
-
-        emailTextField1.setText("Email:");
-        emailTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                emailTextField1FocusGained(evt);
-            }
-        });
-
         jLabel5.setText("Digite a Senha Antiga");
 
         senhaAntigaTextField2.setText("Senha Atual");
@@ -243,24 +242,17 @@ public class RogerCardLogged extends javax.swing.JFrame {
                         .addComponent(avisoLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(alterarSenhaPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(alterarSenhaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(alterarSenhaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(senhaNovaTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(senhaAntigaTextField2))
-                            .addComponent(emailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(alterarSenhaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(senhaNovaTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(senhaAntigaTextField2))))
                 .addContainerGap(163, Short.MAX_VALUE))
         );
         alterarSenhaPanel1Layout.setVerticalGroup(
             alterarSenhaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(alterarSenhaPanel1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(emailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(senhaAntigaTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,7 +260,7 @@ public class RogerCardLogged extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(senhaNovaTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(116, 116, 116)
                 .addGroup(alterarSenhaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(avisoLabel9))
@@ -335,6 +327,7 @@ public class RogerCardLogged extends javax.swing.JFrame {
 
         getContentPane().add(excluirContaPanel1, "card5");
 
+        textcartoesTextArea1.setEditable(false);
         textcartoesTextArea1.setColumns(20);
         textcartoesTextArea1.setRows(5);
         jScrollPane1.setViewportView(textcartoesTextArea1);
@@ -426,6 +419,7 @@ public class RogerCardLogged extends javax.swing.JFrame {
 
         getContentPane().add(pagarFaturaPanel1, "card7");
 
+        textinvoiceopenTextArea1.setEditable(false);
         textinvoiceopenTextArea1.setColumns(20);
         textinvoiceopenTextArea1.setRows(5);
         jScrollPane2.setViewportView(textinvoiceopenTextArea1);
@@ -453,9 +447,74 @@ public class RogerCardLogged extends javax.swing.JFrame {
 
         getContentPane().add(OpenInvoicePanel1, "card8");
 
+        closeInvoiceTextArea1.setEditable(false);
+        closeInvoiceTextArea1.setColumns(20);
+        closeInvoiceTextArea1.setRows(5);
+        jScrollPane3.setViewportView(closeInvoiceTextArea1);
+
+        javax.swing.GroupLayout closeInvoicePanel1Layout = new javax.swing.GroupLayout(closeInvoicePanel1);
+        closeInvoicePanel1.setLayout(closeInvoicePanel1Layout);
+        closeInvoicePanel1Layout.setHorizontalGroup(
+            closeInvoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 582, Short.MAX_VALUE)
+            .addGroup(closeInvoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(closeInvoicePanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        closeInvoicePanel1Layout.setVerticalGroup(
+            closeInvoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 301, Short.MAX_VALUE)
+            .addGroup(closeInvoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(closeInvoicePanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
+        getContentPane().add(closeInvoicePanel1, "card9");
+
+        jLabel11.setText("Valor Total da Fatura");
+
+        applyDiscountCheckBox1.setText("Aplicar Desconto");
+        applyDiscountCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                applyDiscountCheckBox1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout payInvoicePanel1Layout = new javax.swing.GroupLayout(payInvoicePanel1);
+        payInvoicePanel1.setLayout(payInvoicePanel1Layout);
+        payInvoicePanel1Layout.setHorizontalGroup(
+            payInvoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(payInvoicePanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(payInvoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(payInvoicePanel1Layout.createSequentialGroup()
+                        .addComponent(invoiceTotalTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(applyDiscountCheckBox1))
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(262, Short.MAX_VALUE))
+        );
+        payInvoicePanel1Layout.setVerticalGroup(
+            payInvoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(payInvoicePanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(payInvoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(invoiceTotalTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(applyDiscountCheckBox1))
+                .addContainerGap(229, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(payInvoicePanel1, "card10");
+
         faturasCartaoMenu2.setText("Faturas");
 
-        registrarFaturaMenuItem3.setText("Registrar Faturas a pagar");
+        registrarFaturaMenuItem3.setText("Registrar Contas a pagar");
         registrarFaturaMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registrarFaturaMenuItem3ActionPerformed(evt);
@@ -463,13 +522,29 @@ public class RogerCardLogged extends javax.swing.JFrame {
         });
         faturasCartaoMenu2.add(registrarFaturaMenuItem3);
 
-        jMenuItem1.setText("Visualizar Faturas em Aberto");
+        openInvoiceMenuItem1.setText("Visualizar Faturas em Aberto");
+        openInvoiceMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openInvoiceMenuItem1ActionPerformed(evt);
+            }
+        });
+        faturasCartaoMenu2.add(openInvoiceMenuItem1);
+
+        jMenuItem1.setText("Pagar Fatura");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
             }
         });
         faturasCartaoMenu2.add(jMenuItem1);
+
+        closeInvoiceMenuItem3.setText("Visualizar Faturas Fechadas");
+        closeInvoiceMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeInvoiceMenuItem3ActionPerformed(evt);
+            }
+        });
+        faturasCartaoMenu2.add(closeInvoiceMenuItem3);
 
         jMenuBar1.add(faturasCartaoMenu2);
 
@@ -566,11 +641,6 @@ public class RogerCardLogged extends javax.swing.JFrame {
         antigoemailTextField1.selectAll();
     }//GEN-LAST:event_antigoemailTextField1FocusGained
 
-    private void emailTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailTextField1FocusGained
-        // TODO add your handling code here:
-        emailTextField1.selectAll();
-    }//GEN-LAST:event_emailTextField1FocusGained
-
     private void senhaAntigaTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_senhaAntigaTextField2FocusGained
         // TODO add your handling code here:
         senhaAntigaTextField2.selectAll();
@@ -578,13 +648,12 @@ public class RogerCardLogged extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        String email = emailTextField1.getText();
         String senhaAntiga = senhaAntigaTextField2.getText();
         
         String senhaNova  = senhaNovaTextField1.getText();
         UserController userController = new UserController();
         try {
-            if(userController.alterarSenha(senhaNova, senhaAntiga, email)){
+            if(userController.alterarSenha(senhaNova, senhaAntiga)){
                 avisoLabel9.setText("Senha Alterada com Sucesso");
                 
             }else{
@@ -698,7 +767,7 @@ public class RogerCardLogged extends javax.swing.JFrame {
         
     }//GEN-LAST:event_invoiceDueDateTextField1ActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void openInvoiceMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openInvoiceMenuItem1ActionPerformed
         // TODO add your handling code here:
         CardLayout cardLayout = (CardLayout) mainPanel.getLayout();
         cardLayout.show(mainPanel, "OpenInvoicePanel1");
@@ -712,7 +781,47 @@ public class RogerCardLogged extends javax.swing.JFrame {
         }
         textinvoiceopenTextArea1.setText(printInvoiceOpen);
         
+    }//GEN-LAST:event_openInvoiceMenuItem1ActionPerformed
+
+    private void closeInvoiceMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeInvoiceMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        CardLayout cardLayout = (CardLayout) mainPanel.getLayout();
+        cardLayout.show(mainPanel, "closeInvoicePanel1");
+        
+        InvoiceController invoiceController = new InvoiceController();
+        String printInvoiceClose = "";
+        try {
+            printInvoiceClose = invoiceController.printCloseInvoice();
+        } catch (SQLException ex) {
+            Logger.getLogger(RogerCardLogged.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        closeInvoiceTextArea1.setText(printInvoiceClose);
+        
+    }//GEN-LAST:event_closeInvoiceMenuItem3ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        CardLayout cardLayout = (CardLayout) mainPanel.getLayout();
+        cardLayout.show(mainPanel, "payInvoicePanel1");
+        
+        InvoiceController invoiceController = new InvoiceController();
+        try {
+            Double invoiceValue = invoiceController.invoiceValue();
+            invoiceTotalTextField1.setText(invoiceValue.toString());
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RogerCardLogged.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void applyDiscountCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyDiscountCheckBox1ActionPerformed
+        // TODO add your handling code here:
+        
+        if(applyDiscountCheckBox1.isSelected()){
+            
+        }
+    }//GEN-LAST:event_applyDiscountCheckBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -761,25 +870,29 @@ public class RogerCardLogged extends javax.swing.JFrame {
     private javax.swing.JPanel alterarEmailPanel1;
     private javax.swing.JPanel alterarSenhaPanel1;
     private javax.swing.JTextField antigoemailTextField1;
+    private javax.swing.JCheckBox applyDiscountCheckBox1;
     private javax.swing.JLabel avisoLabel4;
     private javax.swing.JLabel avisoLabel9;
     private javax.swing.JMenuItem cartoesMenuItem1;
+    private javax.swing.JMenuItem closeInvoiceMenuItem3;
+    private javax.swing.JPanel closeInvoicePanel1;
+    private javax.swing.JTextArea closeInvoiceTextArea1;
     private javax.swing.JButton deleteAccountButton1;
-    private javax.swing.JTextField emailTextField1;
     private javax.swing.JMenuItem excluirContaMenuItem3;
     private javax.swing.JPanel excluirContaPanel1;
     private javax.swing.JTextField exclusaoTextField1;
     private javax.swing.JMenu faturasCartaoMenu2;
     private javax.swing.JFormattedTextField invoiceDueDateTextField1;
     private javax.swing.JTextField invoiceNumTextField1;
+    private javax.swing.JTextField invoiceTotalTextField1;
     private javax.swing.JTextField invoiceValueTextField1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -792,9 +905,12 @@ public class RogerCardLogged extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JTextField novoemailTextField2;
+    private javax.swing.JMenuItem openInvoiceMenuItem1;
     private javax.swing.JPanel pagarFaturaPanel1;
+    private javax.swing.JPanel payInvoicePanel1;
     private javax.swing.JButton regFaturaButton1;
     private javax.swing.JMenuItem registrarFaturaMenuItem3;
     private javax.swing.JTextField senhaAntigaTextField2;

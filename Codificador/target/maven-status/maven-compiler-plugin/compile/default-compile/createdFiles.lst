@@ -3,6 +3,7 @@ GUI\RogerCardLogged$17.class
 GUI\RogerCardGUI$7.class
 GUI\RogerCardLogged.class
 GUI\RogerCardLogged$10.class
+GUI\RogerCardLogged$20.class
 Session\UserSession.class
 Class\CreditCard.class
 GUI\RogerCardGUI$4.class
@@ -16,6 +17,7 @@ Controllers\UserController.class
 Controllers\UserController$RegisterStatus.class
 GUI\RogerCardLogged$5.class
 GUI\RogerCardLogged$16.class
+GUI\RogerCardLogged$21.class
 GUI\RogerCardLogged$2.class
 Class\Invoice.class
 data\FileController.class

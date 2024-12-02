@@ -81,26 +81,67 @@ public class InvoiceController {
     public String printOpenInvoice() throws SQLException{
         StringBuilder  invoices = new StringBuilder();
         List<Invoice> invoiceList = OpenInvoiceView();
+        double totalValue = 0.0;
        
           for (Invoice i : invoiceList) {
               if("ABERTA".equalsIgnoreCase(i.getStatus())){
-        invoices.append("Fatura: ").append(i.getInvoiceNumber())
+        invoices.append("Conta: ").append(i.getInvoiceNumber())
                 .append("\nValor: ").append(i.getValue())
                 .append("\nData de Vencimento: ").append(i.getDueDate())
                 .append("\nStatus: ").append(i.getStatus())
                 .append("\n\n");  // Adiciona uma linha em branco entre faturas
+                totalValue += i.getValue();
         }
     }
     
         if (invoices.length() == 0) {
             invoices.append("Nenhuma fatura encontrada.");
+    }else{
+            invoices.append("Valor total da Fatura em Aberto: ").append(totalValue);
+        }
+    
+        return invoices.toString();
     }
+    
+     public String printCloseInvoice() throws SQLException{
+        StringBuilder  invoices = new StringBuilder();
+        List<Invoice> invoiceList = OpenInvoiceView();
+        double totalValue = 0.0;
+        
+          for (Invoice i : invoiceList) {
+              if("FECHADA".equalsIgnoreCase(i.getStatus())){
+        invoices.append("Conta: ").append(i.getInvoiceNumber())
+                .append("\nValor: ").append(i.getValue())
+                .append("\nData de Vencimento: ").append(i.getDueDate())
+                .append("\nStatus: ").append(i.getStatus())
+                .append("\n\n");  // Adiciona uma linha em branco entre faturas
+                totalValue += i.getValue();
+        }
+    }
+    
+        if (invoices.length() == 0) {
+            invoices.append("Nenhuma fatura encontrada.");
+    }else{
+         invoices.append("Valor total das Fatura já pagas: ").append(totalValue);
+     }
     
         return invoices.toString();
     }
     
     
-    
-    
+     
+     public Double invoiceValue() throws SQLException{
+        
+        List<Invoice> invoiceList = OpenInvoiceView();
+        double totalValue = 0.0;
+        
+        for (Invoice i : invoiceList) {
+            if("ABERTA".equalsIgnoreCase(i.getStatus())){
+           
+                totalValue += i.getValue();
+        }
+    }
+        return totalValue;
+    }
     
 }

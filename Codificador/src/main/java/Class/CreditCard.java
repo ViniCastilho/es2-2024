@@ -75,7 +75,13 @@ public class CreditCard {
         this.invoice.add(invoice);
     }
     
-    
+        
+    public LocalDate generateDueDate(){
+        LocalDate today = LocalDate.now();
+        LocalDate dueDate = today.plusYears(5);
+        
+        return dueDate;
+    }
     
     
 

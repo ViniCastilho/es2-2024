@@ -10,4 +10,9 @@ package Controllers;
  */
 public class PointsController {
     
+    public void registerPayment(){
+        
+    }
+    
+    
 }
