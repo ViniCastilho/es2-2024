@@ -114,6 +114,7 @@ public class InvoiceController {
                 .append("\nValor: ").append(i.getValue())
                 .append("\nData de Vencimento: ").append(i.getDueDate())
                 .append("\nStatus: ").append(i.getStatus())
+                .append("\nPontos Ganhos: ").append(i.getValue() * 10)
                 .append("\n\n");  // Adiciona uma linha em branco entre faturas
                 totalValue += i.getValue();
         }
@@ -144,4 +145,11 @@ public class InvoiceController {
         return totalValue;
     }
     
+    
+     public void payInvoice(int numberCard){
+         
+     }
+     
+     
+     
 }

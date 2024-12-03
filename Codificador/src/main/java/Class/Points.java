@@ -13,13 +13,13 @@ import java.time.LocalDate;
 public class Points {
     private int balance;
     private LocalDate pointsDate;
-    private LocalDate pointsExpire;
+
     
     
-    public Points(int balance, LocalDate pointsDate, LocalDate pointsExpire){
+    public Points(int balance, LocalDate pointsDate){
         this.balance = balance;
         this.pointsDate = pointsDate;
-        this.pointsExpire = pointsExpire;
+
     }
     
     public void showBalance(){
@@ -42,13 +42,6 @@ public class Points {
         this.pointsDate = pointsDate;
     }
 
-    public LocalDate getPointsExpire() {
-        return pointsExpire;
-    }
-
-    public void setPointsExpire(LocalDate pointsExpire) {
-        this.pointsExpire = pointsExpire;
-    }
     
     
     

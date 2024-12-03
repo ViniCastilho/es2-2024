@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -40,18 +41,25 @@ public class RogerCardGUI extends javax.swing.JFrame {
 
         loginPanel1 = new javax.swing.JPanel();
         emailLogTextField1 = new javax.swing.JTextField();
-        passLogTextField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         entrarButton2 = new javax.swing.JButton();
         voltar2Button2 = new javax.swing.JButton();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jLabel7 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel8 = new javax.swing.JLabel();
         cadastroPanel1 = new javax.swing.JPanel();
         nameCadTextField1 = new javax.swing.JTextField();
         emailCadTextField2 = new javax.swing.JTextField();
-        passCadTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         erroLabel2 = new javax.swing.JLabel();
         voltarButton2 = new javax.swing.JButton();
+        PasswordField1 = new javax.swing.JPasswordField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
         menuPanel1 = new javax.swing.JPanel();
         cadastrarButton2 = new javax.swing.JButton();
         logarButton2 = new javax.swing.JButton();
@@ -71,7 +79,6 @@ public class RogerCardGUI extends javax.swing.JFrame {
             }
         });
 
-        emailLogTextField1.setText("Email:");
         emailLogTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 emailLogTextField1FocusGained(evt);
@@ -80,13 +87,6 @@ public class RogerCardGUI extends javax.swing.JFrame {
         emailLogTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailLogTextField1ActionPerformed(evt);
-            }
-        });
-
-        passLogTextField2.setText("Senha: ");
-        passLogTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                passLogTextField2FocusGained(evt);
             }
         });
 
@@ -107,6 +107,12 @@ public class RogerCardGUI extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox2.setText("Mostrar Senha");
+
+        jLabel7.setText("Email");
+
+        jLabel8.setText("Senha");
+
         javax.swing.GroupLayout loginPanel1Layout = new javax.swing.GroupLayout(loginPanel1);
         loginPanel1.setLayout(loginPanel1Layout);
         loginPanel1Layout.setHorizontalGroup(
@@ -114,54 +120,63 @@ public class RogerCardGUI extends javax.swing.JFrame {
             .addGroup(loginPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(loginPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(passLogTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(loginPanel1Layout.createSequentialGroup()
                         .addComponent(voltar2Button2)
                         .addGap(71, 71, 71)
-                        .addComponent(entrarButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                        .addComponent(entrarButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(151, 151, 151))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailLogTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(loginPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBox2)
+                        .addContainerGap(21, Short.MAX_VALUE))
+                    .addGroup(loginPanel1Layout.createSequentialGroup()
+                        .addGroup(loginPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(loginPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(loginPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(emailLogTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel7))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         loginPanel1Layout.setVerticalGroup(
             loginPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPanel1Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(43, 43, 43)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(emailLogTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(passLogTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(loginPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox2)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(loginPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(loginPanel1Layout.createSequentialGroup()
                         .addGap(77, 77, 77)
                         .addComponent(entrarButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(23, 23, 23))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanel1Layout.createSequentialGroup()
+                    .addGroup(loginPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(voltar2Button2)
                         .addContainerGap())))
         );
 
-        nameCadTextField1.setText("Nome: ");
         nameCadTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 nameCadTextField1FocusGained(evt);
             }
         });
 
-        emailCadTextField2.setText("Email: ");
         emailCadTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 emailCadTextField2FocusGained(evt);
-            }
-        });
-
-        passCadTextField3.setText("Senha: ");
-        passCadTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                passCadTextField3FocusGained(evt);
             }
         });
 
@@ -181,11 +196,31 @@ public class RogerCardGUI extends javax.swing.JFrame {
             }
         });
 
+        PasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PasswordField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Nome:");
+
+        jLabel5.setText("Email");
+
+        jLabel6.setText("Senha");
+
+        jCheckBox1.setText("Mostrar Senha");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout cadastroPanel1Layout = new javax.swing.GroupLayout(cadastroPanel1);
         cadastroPanel1.setLayout(cadastroPanel1Layout);
         cadastroPanel1Layout.setHorizontalGroup(
             cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cadastroPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(cadastroPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
@@ -193,18 +228,20 @@ public class RogerCardGUI extends javax.swing.JFrame {
                         .addGap(59, 59, 59)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
-                        .addComponent(erroLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 33, Short.MAX_VALUE))
+                        .addComponent(erroLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(cadastroPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(6, 6, 6)
+                        .addGroup(cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nameCadTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
                             .addComponent(emailCadTextField2)
-                            .addComponent(nameCadTextField1)
-                            .addGroup(cadastroPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(passCadTextField3))))
-                .addContainerGap())
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(PasswordField1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         cadastroPanel1Layout.setVerticalGroup(
             cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,12 +249,20 @@ public class RogerCardGUI extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nameCadTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(9, 9, 9)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(emailCadTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(passCadTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastroPanel1Layout.createSequentialGroup()
                         .addGroup(cadastroPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -333,8 +378,10 @@ public class RogerCardGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         String name = nameCadTextField1.getText();
         String email = emailCadTextField2.getText();
-        String pass = passCadTextField3.getText();
-  
+        char[] passChar = PasswordField1.getPassword();
+        
+        String pass = new String(passChar);
+        
  
         UserController userController = new UserController();
         RegisterStatus status = null;
@@ -347,14 +394,26 @@ public class RogerCardGUI extends javax.swing.JFrame {
         
  
         switch (status) {
-        case EMPTY_FIELDS -> erroLabel2.setText("Dados Incompletos");
-        case USER_ALREADY_EXISTS -> erroLabel2.setText("Usuário já cadastrado");
-        case SUCCESS -> erroLabel2.setText("Usuário registrado com sucesso!");
-        default -> erroLabel2.setText("Erro desconhecido");
-        }
-        
+    case EMPTY_FIELDS:
+        JOptionPane.showMessageDialog(this, "Preencha Todos os Campos em Branco", "Erro", JOptionPane.ERROR_MESSAGE);
+        break;
+
+    case USER_ALREADY_EXISTS:
+        erroLabel2.setText("Email já cadastrado");
+        break;
+
+    case SUCCESS:
+        JOptionPane.showMessageDialog(this, "Usuário Cadastrado com Sucesso", "Sucesso", JOptionPane.PLAIN_MESSAGE);
         cadastroPanel1.setVisible(false);
         loginPanel1.setVisible(true);
+        break;
+
+    default:
+        erroLabel2.setText("Erro desconhecido");
+        break;
+}
+
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -371,25 +430,18 @@ public class RogerCardGUI extends javax.swing.JFrame {
         emailCadTextField2.selectAll();
     }//GEN-LAST:event_emailCadTextField2FocusGained
 
-    private void passCadTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passCadTextField3FocusGained
-        // TODO add your handling code here:
-        passCadTextField3.selectAll();
-    }//GEN-LAST:event_passCadTextField3FocusGained
-
     private void emailLogTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailLogTextField1FocusGained
         // TODO add your handling code here:
         emailLogTextField1.selectAll();
     }//GEN-LAST:event_emailLogTextField1FocusGained
 
-    private void passLogTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passLogTextField2FocusGained
-        // TODO add your handling code here:
-        passLogTextField2.selectAll();
-    }//GEN-LAST:event_passLogTextField2FocusGained
-
     private void entrarButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarButton2ActionPerformed
         // TODO add your handling code here:
-         String email = emailLogTextField1.getText();
-         String pass = passLogTextField2.getText();
+        String email = emailLogTextField1.getText();
+        char[] passChar = jPasswordField1.getPassword();
+         
+        String pass = new String(passChar);
+         
          UserController userController = new UserController();
          //realiza a validação do login
          //adicionar um if para decidir o que sera feito na interface
@@ -460,6 +512,19 @@ public class RogerCardGUI extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_sairButton2ActionPerformed
 
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+        if(jCheckBox1.isSelected()){
+            PasswordField1.setEchoChar((char)0);
+        }else{
+           PasswordField1.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void PasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PasswordField1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -496,6 +561,7 @@ public class RogerCardGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField PasswordField1;
     private javax.swing.JButton cadastrarButton2;
     private javax.swing.JPanel cadastroPanel1;
     private javax.swing.JTextField emailCadTextField2;
@@ -503,15 +569,21 @@ public class RogerCardGUI extends javax.swing.JFrame {
     private javax.swing.JButton entrarButton2;
     private javax.swing.JLabel erroLabel2;
     private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JButton logarButton2;
     private javax.swing.JPanel loginPanel1;
     private javax.swing.JPanel menuPanel1;
     private javax.swing.JTextField nameCadTextField1;
-    private javax.swing.JTextField passCadTextField3;
-    private javax.swing.JTextField passLogTextField2;
     private javax.swing.JButton sairButton2;
     private javax.swing.JButton voltar2Button2;
     private javax.swing.JButton voltarButton2;
