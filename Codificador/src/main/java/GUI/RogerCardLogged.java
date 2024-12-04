@@ -814,7 +814,12 @@ public class RogerCardLogged extends javax.swing.JFrame {
     InvoiceController invoiceController = new InvoiceController();
     try {
         if(invoiceController.createInvoice(invoiceNumber, invoiceValue, invoiceDueDate, null, status)){
-            JOptionPane.showMessageDialog(this, "Registrado com Sucesso", "Sucesso", JOptionPane.YES_OPTION);
+            JOptionPane.showMessageDialog(
+this, 
+      "Registrado com Sucesso!", 
+       "Sucesso", 
+   JOptionPane.INFORMATION_MESSAGE
+);
         }else{
             JOptionPane.showMessageDialog(this, "Já existe uma Compra com esse código", "Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -967,7 +972,11 @@ public class RogerCardLogged extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "O Limite não foi suficiente para Pagar toda a Fatura.Valor restante está em aberto", "Error", JOptionPane.ERROR_MESSAGE);
                     break;
                 case SUCCESS:
-                    JOptionPane.showMessageDialog(this, "Pagamento Total Realizado com Sucesso", "Success", JOptionPane.YES_OPTION);
+                    JOptionPane.showMessageDialog(
+        this, 
+              "Pagamento Total Realizado com Sucesso!", 
+                "Sucesso", 
+            JOptionPane.INFORMATION_MESSAGE);
                     break;
                 default:
                     break;

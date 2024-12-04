@@ -10,6 +10,8 @@ import Session.UserSession;
 import data.FileController;
 import data.PointsDB;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
@@ -43,14 +45,57 @@ public class PointsController {
    
     }
     
-    //atualizar para lidar com quantidades especificas de pontos
-    public void usePoints(Double points) throws SQLException{
-        Connection connection = new FileController().getConnection();    
-        PointsDB pointsDB = new PointsDB(connection);
-        
-        pointsDB.update();
-        
-    }
+   public void usePoints(Double points) throws SQLException {
+    Connection connection = new FileController().getConnection();
+    UserSession userSession = new UserSession();
+    String loggedEmail = userSession.getUserEmail();
+
+    
+        // Seleciona os pontos disponíveis do usuário, ordenados pela data
+        String selectSql = "SELECT pointsbalance, pointsdate FROM pointsdb WHERE useremailfk = ? AND pointsstatus = 'disponível' ORDER BY pointsdate ASC";
+        PreparedStatement selectStatement = connection.prepareStatement(selectSql);
+        selectStatement.setString(1, loggedEmail);
+        ResultSet resultSet = selectStatement.executeQuery();
+
+        double remainingPoints = points;
+
+        while (resultSet.next() && remainingPoints > 0) {
+            int id = resultSet.getInt("id");
+            double availablePoints = resultSet.getDouble("points");
+
+            if (remainingPoints >= availablePoints) {
+                // Marca os pontos como usados
+                String updateSql = "UPDATE pointsdb SET pointsstatus = 'usado', points = 0 WHERE id = ?";
+                PreparedStatement updateStatement = connection.prepareStatement(updateSql);
+                updateStatement.setInt(1, id);
+                updateStatement.executeUpdate();
+
+                remainingPoints -= availablePoints;
+            } else {
+                // Atualiza os pontos restantes na linha atual
+                double updatedPoints = availablePoints - remainingPoints;
+                String partialUpdateSql = "UPDATE pointsdb SET points = ?, pointsstatus = 'disponível' WHERE id = ?";
+                PreparedStatement partialUpdateStatement = connection.prepareStatement(partialUpdateSql);
+                partialUpdateStatement.setDouble(1, updatedPoints);
+                partialUpdateStatement.setInt(2, id);
+                partialUpdateStatement.executeUpdate();
+
+                // Atualiza os pontos consumidos na linha atual
+                String markUsedSql = "UPDATE pointsdb SET pointsstatus = 'usado' WHERE id = ?";
+                PreparedStatement markUsedStatement = connection.prepareStatement(markUsedSql);
+                markUsedStatement.setInt(1, id);
+                markUsedStatement.executeUpdate();
+
+                remainingPoints = 0;
+            }
+        }
+
+       
+     }
+   
+   
+
+
     
     
     

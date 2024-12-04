@@ -159,89 +159,86 @@ public class InvoiceController {
     }
      
     public RegisterPayment payInvoice(String numberCard, Double points) throws SQLException {
-    Connection connection = new FileController().getConnection();
-    
-    // Obtém as faturas pendentes do usuário ordenadas pela data ou ordem desejada
-    String fetchInvoicesSql = "SELECT invoicenumber, invoicevalue FROM invoicedb WHERE creditnumberfk = ? AND invoicestatus = 'ABERTA' ORDER BY invoiceduedate ASC";
-    PreparedStatement fetchStatement = connection.prepareStatement(fetchInvoicesSql);
-    fetchStatement.setString(1, numberCard);
-    ResultSet resultSet = fetchStatement.executeQuery();
-    
-    CreditDB creditDB = new CreditDB(connection);
-    Double paymentAmount = creditDB.select(numberCard).getLimit();
-    
-    PromotionController promotionController = new PromotionController();
-    Double promotion = promotionController.calculatePromotion(points);
-   
-    double remainingPayment = paymentAmount + promotion;
-    System.out.println("VALOR DE LIMIT: "+ remainingPayment);
-    
-    PointsController pointsController = new PointsController();
-    pointsController.usePoints(points);
-    
-    
-    
-    
-    //tratamento para o calculo de pontos ganhos
-    InvoiceDB invoiceDB = new InvoiceDB(connection);
-    double invoiceValueTemp = invoiceDB.select(numberCard).getValue();
-     double limitTemp = creditDB.select(numberCard).getLimit();
-    if(invoiceValueTemp > limitTemp){
-        invoiceValueTemp = limitTemp;
-    }
-    
-    
-    
-    pointsController.addPoints(invoiceValueTemp);
-    
-    
-    while (resultSet.next() && remainingPayment > 0) {
-        String invoiceNumber = resultSet.getString("invoicenumber");
-        double invoiceValue = resultSet.getDouble("invoiceValue");
+    Connection connection = null;
+    PreparedStatement fetchStatement = null;
+    ResultSet resultSet = null;
 
-        if (remainingPayment >= invoiceValue) {
-            // Marca a fatura como paga
-            String updateInvoiceSql = "UPDATE invoicedb SET invoicestatus = 'FECHADA' WHERE invoicenumber = ?";
-            PreparedStatement updateStatement = connection.prepareStatement(updateInvoiceSql);
-            updateStatement.setString(1, invoiceNumber);
-            updateStatement.executeUpdate();
+    try {
+        connection = new FileController().getConnection();
 
-            remainingPayment -= invoiceValue;
+        // Obtém as faturas pendentes do usuário ordenadas pela data
+        String fetchInvoicesSql = "SELECT invoicenumber, invoicevalue FROM invoicedb WHERE creditnumberfk = ? AND invoicestatus = 'ABERTA' ORDER BY invoiceduedate ASC";
+        fetchStatement = connection.prepareStatement(fetchInvoicesSql);
+        fetchStatement.setString(1, numberCard);
+        resultSet = fetchStatement.executeQuery();
+
+        CreditDB creditDB = new CreditDB(connection);
+        double currentLimit = creditDB.select(numberCard).getLimit();
+
+        PromotionController promotionController = new PromotionController();
+        double promotion = promotionController.calculatePromotion(points);
+
+        // Valor total disponível para pagamento
+        double remainingPayment = currentLimit + promotion;
+
+        System.out.println("VALOR DE LIMITE ATUAL: " + currentLimit);
+        System.out.println("VALOR DE PROMOÇÃO: " + promotion);
+        System.out.println("TOTAL DISPONÍVEL: " + remainingPayment);
+
+        PointsController pointsController = new PointsController();
+        pointsController.usePoints(points); // Deduz os pontos usados para obter a promoção
+
+        double totalPaid = 0;
+
+        while (resultSet.next() && remainingPayment > 0) {
+            String invoiceNumber = resultSet.getString("invoicenumber");
+            double invoiceValue = resultSet.getDouble("invoicevalue");
+
+            if (remainingPayment >= invoiceValue) {
+                // Marca a fatura como paga
+                String updateInvoiceSql = "UPDATE invoicedb SET invoicestatus = 'FECHADA' WHERE invoicenumber = ?";
+                PreparedStatement updateStatement = connection.prepareStatement(updateInvoiceSql);
+                updateStatement.setString(1, invoiceNumber);
+                updateStatement.executeUpdate();
+
+                remainingPayment -= invoiceValue;
+                totalPaid += invoiceValue;
+            } else {
+                // Atualiza a fatura com o valor restante
+                double updatedValue = invoiceValue - remainingPayment;
+                String partialUpdateSql = "UPDATE invoicedb SET invoicevalue = ?, invoicestatus = 'ABERTA' WHERE invoicenumber = ?";
+                PreparedStatement partialUpdateStatement = connection.prepareStatement(partialUpdateSql);
+                partialUpdateStatement.setDouble(1, updatedValue);
+                partialUpdateStatement.setString(2, invoiceNumber);
+                partialUpdateStatement.executeUpdate();
+
+                totalPaid += remainingPayment;
+                remainingPayment = 0;
+            }
+        }
+
+        // Atualiza o limite restante
+        double updatedLimit = currentLimit - totalPaid + promotion;
+        if (updatedLimit < 0) {
+            updatedLimit = 0; // Garante que o limite não fique negativo
+        }
+        creditDB.update(numberCard, updatedLimit, null, null);
+
+        // Adiciona pontos com base no valor pago
+        pointsController.addPoints(totalPaid);
+
+        // Retornos com base no saldo restante
+        if (remainingPayment > 0) {
+            return RegisterPayment.NOFUNDS;
+        } else if (totalPaid == 0) {
+            return RegisterPayment.INSUFICIENTMONEY;
         } else {
-            // Atualiza a fatura com o valor restante e marca como parcialmente paga
-            
-            double updatedValue = invoiceValue - remainingPayment;
-            String partialUpdateSql = "UPDATE invoicedb SET invoiceValue = ?, invoicestatus = 'ABERTA' WHERE invoicenumber = ?";
-            PreparedStatement partialUpdateStatement = connection.prepareStatement(partialUpdateSql);
-            partialUpdateStatement.setDouble(1, updatedValue);
-            partialUpdateStatement.setString(2, invoiceNumber);
-            partialUpdateStatement.executeUpdate();
-
-            remainingPayment = 0;
+            return RegisterPayment.SUCCESS;
+        }
+    } finally {
         }
     }
 
-    if (remainingPayment == 0) {
-        creditDB.update(numberCard, invoiceValueTemp - creditDB.select(numberCard).getLimit(),null,null);
-        return RegisterPayment.NOFUNDS; // O pagamento não foi suficiente
-    }
-    
-    // Verifica se ainda há um saldo restante (valor insuficiente para cobrir todas as faturas)
-    if (remainingPayment > 0) {
-        creditDB.update(numberCard, invoiceValueTemp - creditDB.select(numberCard).getLimit(),null,null);
-        return RegisterPayment.INSUFICIENTMONEY; // O pagamento não foi suficiente
-    }
-    
-    
-    
-    creditDB.update(numberCard, invoiceValueTemp - creditDB.select(numberCard).getLimit(),null,null);
-     
-    return RegisterPayment.SUCCESS; // O pagamento foi suficiente
- 
-    
-   
-    
-    }
      
      
 }

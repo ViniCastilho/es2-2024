@@ -6,6 +6,7 @@ package GUI;
 
 import Controllers.UserController;
 import Controllers.UserController.RegisterStatus;
+import Session.UserSession;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -408,7 +409,13 @@ public class RogerCardGUI extends javax.swing.JFrame {
         break;
 
     case SUCCESS:
-        JOptionPane.showMessageDialog(this, "Usuário Cadastrado com Sucesso", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+              JOptionPane.showMessageDialog(
+  this, 
+        "Usuário Cadastrado com Sucesso!", 
+        "Sucesso", 
+    JOptionPane.INFORMATION_MESSAGE
+);
+
         cadastroPanel1.setVisible(false);
         loginPanel1.setVisible(true);
         break;
@@ -454,12 +461,17 @@ public class RogerCardGUI extends javax.swing.JFrame {
             if(userController.UserLogin(email,pass)){
             RogerCardLogged rogerCardGUI = null;
                 try {
+                    
                     rogerCardGUI = new RogerCardLogged();
                 } catch (ParseException ex) {
                     Logger.getLogger(RogerCardGUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
             
             rogerCardGUI.setVisible(true);
+            UserSession userSession = new UserSession();
+            userSession.AlertLogin();
+            userSession.UpdateCardLimit();
+            
             this.dispose();
             }
            
