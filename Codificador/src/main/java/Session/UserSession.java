@@ -5,6 +5,10 @@
 package Session;
 
 import Class.CreditCard;
+import data.CreditDB;
+import data.FileController;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 
 /**
@@ -23,6 +27,12 @@ public class UserSession {
         return userEmail;
     }
 
+    public static String getUserCreditCard() throws SQLException{
+        Connection connection = new FileController().getConnection();
+        CreditDB creditDB = new CreditDB(connection);
+        return creditDB.select(userEmail).getNumber();
+        
+    }
  
     
 }

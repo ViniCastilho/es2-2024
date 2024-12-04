@@ -41,7 +41,7 @@ public class CreditDB {
         String sql = "SELECT * FROM creditcarddb WHERE creditcardnumber = ?";
         
         
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            PreparedStatement statement = connection.prepareStatement(sql); 
             statement.setString(1, number);
             
                 ResultSet resultSet = statement.executeQuery();
@@ -65,7 +65,7 @@ public class CreditDB {
                     CreditCard creditCard = new CreditCard(creditCardNumber, creditCardLimit, creditCardDueDate, creditCardInvoiceValue);
                     return creditCard;
                 }
-            }
+            
         
         
         return null; // Se não encontrar o cartão de crédito
@@ -75,19 +75,19 @@ public class CreditDB {
     
 
     
-    public void update(String number, String newLimit,String newDueDate, String newInvoiceValue) throws SQLException{
+    public void update(String number, Double newLimit,Date newDueDate, Double newInvoiceValue) throws SQLException{
         
         StringBuilder sql = new StringBuilder("UPDATE creditcarddb SET ");
         ///verifica quais dos campos passados são validos e adiciona a query
-        if(newLimit != null && !newLimit.isEmpty()){
+        if(newLimit != null){
             sql.append("creditcardlimit = ?, ");
         }
         
-        if(newDueDate != null && !newDueDate.isEmpty()){
+        if(newDueDate != null){
             sql.append("creditcardduedate = ?, ");
         }
         
-        if(newInvoiceValue != null && !newInvoiceValue.isEmpty()){
+        if(newInvoiceValue != null){
             sql.append("creditcardinvoicevalue = ?, ");
         }
         /// elimina a virgula
@@ -99,14 +99,14 @@ public class CreditDB {
         //Passa os valores a serem mudados para os lugares das virgulas.
         int parameterIndex = 1;
         
-        if(newLimit != null && !newLimit.isEmpty()){
-            statement.setString(parameterIndex++, newLimit);
+        if(newLimit != null){
+            statement.setDouble(parameterIndex++, newLimit);
         }
-        if(newDueDate != null && !newDueDate.isEmpty()){
-            statement.setString(parameterIndex++, newDueDate);
+        if(newDueDate != null){
+            statement.setDate(parameterIndex++, newDueDate);
         }
-        if(newInvoiceValue != null && !newInvoiceValue.isEmpty()){
-            statement.setString(parameterIndex++, newInvoiceValue);
+        if(newInvoiceValue != null){
+            statement.setDouble(parameterIndex++, newInvoiceValue);
         }
         
         statement.setString(parameterIndex,number);

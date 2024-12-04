@@ -108,11 +108,11 @@ public class CreditCardController {
     }
     
     public String printCard() throws SQLException {
-    String cardDetails = "";  // Mudamos o nome da variável para representar o cartão
+    String cardDetails = "";
     CreditCard card = visualizarCartao();  // Obtém o cartão de crédito único
 
     if (card != null) {
-        // Construímos a string com os detalhes do cartão
+        // constri a string com os detalhes do cartão
         cardDetails = "Cartão: " + card.getNumber() + "\n" +
                       "Limite: " + card.getLimit() + "\n" +
                       "Data de vencimento do cartão: " + card.getDueDate() + "\n" +
@@ -123,5 +123,7 @@ public class CreditCardController {
 
     return cardDetails;
 }
+    
+    
   
 }

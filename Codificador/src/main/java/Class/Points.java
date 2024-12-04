@@ -11,14 +11,16 @@ import java.time.LocalDate;
  * @author gerson.lucas_unesp
  */
 public class Points {
-    private int balance;
+    private Double balance;
     private LocalDate pointsDate;
+    private String status;
 
     
     
-    public Points(int balance, LocalDate pointsDate){
+    public Points(Double balance, LocalDate pointsDate, String status){
         this.balance = balance;
         this.pointsDate = pointsDate;
+        this.status = status;
 
     }
     
@@ -26,11 +28,11 @@ public class Points {
         
     }
 
-    public int getBalance() {
+    public Double getBalance() {
         return balance;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(int Double) {
         this.balance = balance;
     }
 
@@ -40,6 +42,14 @@ public class Points {
 
     public void setPointsDate(LocalDate pointsDate) {
         this.pointsDate = pointsDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     

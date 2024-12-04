@@ -41,7 +41,7 @@ public class InvoiceDB {
         }
     ///tratar a mudança de status no invoice futuramente.
     public Invoice select(String number) throws SQLException {
-        String sql = "SELECT * FROM invoicedb WHERE invoicenumber = ?";
+        String sql = "SELECT * FROM invoicedb WHERE creditnumberfk = ?";
         
         
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -102,15 +102,15 @@ public class InvoiceDB {
     }
     
     public List<Invoice> selectAllinvoice(String cardNumber) throws SQLException {
-    Connection connection = null;
-    connection = new FileController().getConnection();
-    List<Invoice> invoiceList = new ArrayList<>();
+        Connection connection = null;
+        connection = new FileController().getConnection();
+        List<Invoice> invoiceList = new ArrayList<>();
 
-    String sql = "SELECT invoicenumber, invoicevalue, invoiceduedate, invoicepayment, invoicestatus " +
-            "FROM invoicedb WHERE creditnumberfk = ?";
+        String sql = "SELECT invoicenumber, invoicevalue, invoiceduedate, invoicepayment, invoicestatus " +
+                "FROM invoicedb WHERE creditnumberfk = ?";
 
-    try (PreparedStatement statement = connection.prepareStatement(sql)) {
-        statement.setString(1, cardNumber);
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, cardNumber);
 
         try (ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {

@@ -12,19 +12,13 @@ import java.util.List;
  * @author gerson.lucas_unesp
  */
 public class Promotion {
-    private List<Promotion> promotionList = new ArrayList<>();
+    private List<Points> pointsList = new ArrayList<>();
     
     
-    public Promotion(ArrayList promotionList){
-        this.promotionList = promotionList;
+    public Promotion(ArrayList pointsList){
+        this.pointsList = pointsList;
     }
     
-    public void showPromotion(){
-        
-    }
-    
-    public void aplyDiscount(){
-        
-    }
+
     
 }

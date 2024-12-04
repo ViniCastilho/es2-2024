@@ -108,6 +108,11 @@ public class RogerCardGUI extends javax.swing.JFrame {
         });
 
         jCheckBox2.setText("Mostrar Senha");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Email");
 
@@ -367,7 +372,7 @@ public class RogerCardGUI extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(14, 14, 14)
-                    .addComponent(loginPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, Short.MAX_VALUE)
+                    .addComponent(loginPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(15, 15, 15)))
         );
 
@@ -524,6 +529,15 @@ public class RogerCardGUI extends javax.swing.JFrame {
     private void PasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordField1ActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        // TODO add your handling code here:
+         if(jCheckBox2.isSelected()){
+            jPasswordField1.setEchoChar((char)0);
+        }else{
+           jPasswordField1.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -10,4 +10,11 @@ package Controllers;
  */
 public class PromotionController {
     
+    public Double calculatePromotion(double points){
+        
+        Double promotion = points * 0.01;
+        return promotion;
+    }
+    
+    
 }
