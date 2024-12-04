@@ -468,6 +468,7 @@ public class RogerCardGUI extends javax.swing.JFrame {
                 }
             
             rogerCardGUI.setVisible(true);
+            
             UserSession userSession = new UserSession();
             userSession.AlertLogin();
             userSession.UpdateCardLimit();
