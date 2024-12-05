@@ -60,22 +60,40 @@ public class UserSession {
         }
     }
 }
-   
-   public void UpdateCardLimit() throws SQLException {
+ public void UpdateCardLimit() throws SQLException {
     Connection connection = new FileController().getConnection();
     UserSession userSession = new UserSession();
-    
+
     // Obtém o email do usuário logado
     String loggedEmail = userSession.getUserEmail();
     
     // Verifica se o dia atual é o dia 5
     if (LocalDate.now().getDayOfMonth() == 5) {
-        // Atualiza o limite do cartão para 1000
-        String updateLimitSql = "UPDATE creditcarddb SET creditcardlimit = 1000 WHERE useremailfk = ?";
+        // Consulta a data do último reset para o usuário
+        String checkResetDateSql = "SELECT last_reset_date FROM creditcarddb WHERE useremailfk = ?";
+        PreparedStatement checkStatement = connection.prepareStatement(checkResetDateSql);
+        checkStatement.setString(1, loggedEmail);
+        ResultSet resultSet = checkStatement.executeQuery();
+
+        if (resultSet.next()) {
+            LocalDate lastResetDate = resultSet.getDate("last_reset_date") != null 
+                ? resultSet.getDate("last_reset_date").toLocalDate() 
+                : null;
+
+            // Se o limite já foi atualizado hoje, não faz nada
+            if (lastResetDate != null && lastResetDate.isEqual(LocalDate.now())) {
+                return; // Já atualizado hoje
+            }
+        }
+
+        // Atualiza o limite do cartão e registra a data do reset
+        String updateLimitSql = "UPDATE creditcarddb SET creditcardlimit = 1000, last_reset_date = ? WHERE useremailfk = ?";
         PreparedStatement updateStatement = connection.prepareStatement(updateLimitSql);
-        updateStatement.setString(1, loggedEmail);
+        updateStatement.setDate(1, java.sql.Date.valueOf(LocalDate.now()));
+        updateStatement.setString(2, loggedEmail);
+
         int rowsAffected = updateStatement.executeUpdate();
-        
+
         if (rowsAffected > 0) {
             // Exibe alerta ao usuário sobre a atualização
             JOptionPane.showMessageDialog(

@@ -132,7 +132,25 @@ public RegisterStatus UserRegister(String name, String email, String pass) throw
    
    
    
-   
+   public boolean isValidPassword(String password) {
+    if (password.length() < 8 || password.length() > 12) {
+        return false;
+    }
+
+    boolean hasUpperCase = false;
+    boolean hasLowerCase = false;
+    boolean hasDigit = false;
+    boolean hasSpecialChar = false;
+
+    for (char c : password.toCharArray()) {
+        if (Character.isUpperCase(c)) hasUpperCase = true;
+        if (Character.isLowerCase(c)) hasLowerCase = true;
+        if (Character.isDigit(c)) hasDigit = true;
+        if (!Character.isLetterOrDigit(c)) hasSpecialChar = true;
+    }
+
+    return hasUpperCase && hasLowerCase && hasDigit && hasSpecialChar;
+}
    
        
 }
