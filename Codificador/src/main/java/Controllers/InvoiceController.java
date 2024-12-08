@@ -181,10 +181,6 @@ public class InvoiceController {
         // Valor total disponível para pagamento
         double remainingPayment = currentLimit + promotion;
 
-        System.out.println("VALOR DE LIMITE ATUAL: " + currentLimit);
-        System.out.println("VALOR DE PROMOÇÃO: " + promotion);
-        System.out.println("TOTAL DISPONÍVEL: " + remainingPayment);
-
         PointsController pointsController = new PointsController();
         pointsController.usePoints(points); // Deduz os pontos usados para obter a promoção
 
